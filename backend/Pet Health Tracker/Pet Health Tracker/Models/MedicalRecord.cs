@@ -21,7 +21,9 @@ namespace Pet_Health_Tracker.Models
         public virtual MedicalRecord Record { get; set; }
         public MedicalRecordType RecordType { get; set;}
         public DateTime TreatedOn { get; set; }
+        public string Description { get; set; }
     }
+
 
     public enum MedicalRecordType
     {
