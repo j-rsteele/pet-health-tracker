@@ -27,7 +27,9 @@ namespace Pet_Health_Tracker.Models
     {
         Vaccination,
         Surgery,
-        Antibiotics,
-        Fixed
+        Treatments,
+        Fixed,
+        Allergies,
+        Medications
     }
 }
