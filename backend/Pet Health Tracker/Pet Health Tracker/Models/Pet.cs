@@ -19,4 +19,10 @@ namespace Pet_Health_Tracker.Models
         public virtual List<Weight> Weights { get; set; }
 
     }
+
+    //public Pet()
+    //{
+
+    //}
+
 }
