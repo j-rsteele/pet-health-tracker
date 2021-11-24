@@ -13,5 +13,9 @@ namespace Pet_Health_Tracker.Models
         public int PetId { get; set; }
         public virtual Pet Pet { get; set; }
 
+        public Weight()
+        {
+
+        }
     }
 }

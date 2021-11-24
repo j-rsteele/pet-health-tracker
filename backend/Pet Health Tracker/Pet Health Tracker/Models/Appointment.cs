@@ -15,5 +15,10 @@ namespace Pet_Health_Tracker.Models
         public string Caregiver { get; set; }
         public string Description { get; set; }
         public string Notes { get; set; }
+
+        public Appointment()
+        {
+
+        }
     }
 }

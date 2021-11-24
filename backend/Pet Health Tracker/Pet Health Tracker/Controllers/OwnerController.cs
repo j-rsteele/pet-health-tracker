@@ -11,9 +11,9 @@ namespace Pet_Health_Tracker
     [ApiController]
     public class OwnerController : ControllerBase
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        //public IActionResult Index()
+        //{
+        //    //return View();
+        //}
     }
 }

@@ -18,5 +18,10 @@ namespace Pet_Health_Tracker.Models
         public virtual Owner Owner { get; set; }
         public virtual List<Weight> Weights { get; set; }
         public virtual List<Appointment> Appointments { get; set; }
+
+        public Pet()
+        {
+
+        }
     }
 }

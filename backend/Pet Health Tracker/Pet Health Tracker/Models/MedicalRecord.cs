@@ -12,6 +12,10 @@ namespace Pet_Health_Tracker.Models
         public int PetId { get; set; }
         public virtual Pet Pet { get; set; }
 
+        public MedicalRecord()
+        {
+
+        }
     }
 
     public class MedicalItem
@@ -19,11 +23,15 @@ namespace Pet_Health_Tracker.Models
         public int Id { get; set; }
         public int MedicalRecordId { get; set; }
         public virtual MedicalRecord Record { get; set; }
-        public MedicalItemType ItemType { get; set;}
+        public MedicalItemType ItemType { get; set; }
         public DateTime TreatedOn { get; set; }
         public string Description { get; set; }
-    }
 
+        public MedicalItem()
+        {
+
+        }
+    }
 
     public enum MedicalItemType
     {
@@ -34,4 +42,5 @@ namespace Pet_Health_Tracker.Models
         Allergies,
         Medications
     }
+    
 }
