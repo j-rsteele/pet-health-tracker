@@ -16,7 +16,7 @@ namespace Pet_Health_Tracker.Models
         public string Photo { get; set; }
         public int OwnerId { get; set; }
         public virtual Owner Owner { get; set; }
+        public virtual List<MedicalItem> MedicalItems { get; set; }   // bypass Medical Record like the weights do
         public virtual List<Weight> Weights { get; set; }
-
     }
 }
