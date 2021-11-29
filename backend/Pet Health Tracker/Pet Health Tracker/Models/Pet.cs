@@ -24,4 +24,10 @@ namespace Pet_Health_Tracker.Models
 
         }
     }
+
+    //public Pet()
+    //{
+
+    //}
+
 }

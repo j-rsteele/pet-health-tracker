@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Pet_Health_Tracker.Models;
 using System;
 using System.Collections.Generic;
@@ -13,20 +14,27 @@ namespace Pet_Health_Tracker
         public DbSet<Pet> Pets { get; set; }
         public DbSet<MedicalRecord> MedicalRecords { get; set; }
 
+        public IConfiguration Configuration;
 
-        protected override void OnConfiguring(DbContextOptionsBuilder Builder)
+        public PetTrackerContext(IConfiguration configuration)
         {
-            base.OnConfiguring(Builder);
-            string connectionString = @"Server=(localdb)\mssqllocaldb; Database=PetTracker_1123; Trusted_Connection=True";
-            Builder.UseSqlServer(connectionString).UseLazyLoadingProxies();
-
+            Configuration = configuration;
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            optionsBuilder.UseSqlServer(connectionString).UseLazyLoadingProxies();
+            base.OnConfiguring(optionsBuilder);
+        }
+
 
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
             base.OnModelCreating(modelbuilder);
 
             modelbuilder.Entity<Owner>().HasData(
+
                 new Owner() { Id = 1, FirstName = "Dan", LastName = "Fairchild" },
                 new Owner() { Id = 2, FirstName = "Kevin", LastName = "Tousey" });
 
@@ -41,6 +49,7 @@ namespace Pet_Health_Tracker
                 new MedicalRecord() { Id = 3, PetId = 3 });
 
             modelbuilder.Entity<MedicalItem>().HasData(
+
                 new MedicalItem() { Id = 1, MedicalRecordId = 1, ItemType = MedicalItemType.Vaccination, TreatedOn = DateTime.Now, Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna." },
                 new MedicalItem() { Id = 2, MedicalRecordId = 1, ItemType = MedicalItemType.Surgery, TreatedOn = DateTime.Now, Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna." },
                 new MedicalItem() { Id = 3, MedicalRecordId = 1, ItemType = MedicalItemType.Treatments, TreatedOn = DateTime.Now, Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna." },
@@ -48,6 +57,7 @@ namespace Pet_Health_Tracker
                 new MedicalItem() { Id = 5, MedicalRecordId = 1, ItemType = MedicalItemType.Allergies, TreatedOn = DateTime.Now, Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna." },
                 new MedicalItem() { Id = 6, MedicalRecordId = 1, ItemType = MedicalItemType.Medications, TreatedOn = DateTime.Now, Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna." });
 
+                                
             modelbuilder.Entity<Weight>().HasData(
                 new Weight() { Id = 1, CurrentWeight = 50, Date = DateTime.Now, PetId = 1 },
                 new Weight() { Id = 2, CurrentWeight = 12, Date = DateTime.Now, PetId = 2 },
