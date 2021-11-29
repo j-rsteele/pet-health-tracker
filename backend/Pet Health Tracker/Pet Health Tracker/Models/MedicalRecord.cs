@@ -9,6 +9,15 @@ namespace Pet_Health_Tracker.Models
     {
         public int Id { get; set; }
 
+        public string Clinic { get; set; }
+        public string PrimaryVet { get; set; }
+        public string Phone { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string ST { get; set; }
+        public string Zip { get; set; }
+
+
         public virtual List<MedicalItem> MedicalItems { get; set; }
 
         public int PetId { get; set; }
@@ -19,7 +28,6 @@ namespace Pet_Health_Tracker.Models
 
         }
     }
-
     public class MedicalItem
     {
         public int Id { get; set; }
@@ -44,5 +52,5 @@ namespace Pet_Health_Tracker.Models
         Allergies,
         Medications
     }
-    
+
 }
