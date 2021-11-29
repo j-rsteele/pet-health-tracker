@@ -1,17 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using 
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Pet_Health_Tracker.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Pet_Health_Tracker.Models;
 
-namespace Pet_Health_Tracker
+namespace Pet_Health_Tracker.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class MedicalRecordController : ControllerBase
     {
+
         private PetTrackerContext _db;
 
         public MedicalRecordController(PetTrackerContext db)
@@ -19,29 +20,50 @@ namespace Pet_Health_Tracker
             _db = db;
         }
 
-        // GET api/<MedicalRecordItemController>/5
-        [HttpGet("{Id}")]
-        public ActionResult <int> Get()
+        // GET api/values
+        [HttpGet]
+        public ActionResult<List<MedicalRecord>> Get()
         {
-            return new string [] {Pet.Name, MedicalItem, MedicalItemType, 
+            return _db.MedicalRecords.ToList();
         }
 
-        // POST api/<MedicalRecordController>
+        [HttpGet("{id}")]
+        public ActionResult<MedicalRecord> Get(int id)
+        {
+            return _db.MedicalRecords.Find(id);
+        }
+
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<MedicalRecord> Post([FromBody] MedicalRecord MedicalRecord)
         {
+            _db.MedicalRecords.Add(MedicalRecord);
+            _db.SaveChanges();
+
+            MedicalRecord.Pet = _db.Pets.Find(MedicalRecord.PetId);
+
+            return MedicalRecord;
         }
 
-        // PUT api/<MedicalRecordController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult<IEnumerable<MedicalRecord>> Put(int id, [FromBody] MedicalRecord MedicalRecord)
         {
+            if (MedicalRecord.Id == id)
+            {
+                _db.MedicalRecords.Update(MedicalRecord);
+                _db.SaveChanges();
+            }
+
+            return _db.MedicalRecords.ToList();
         }
 
-        // DELETE api/<MedicalRecordController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult<List<MedicalRecord>> Delete(int id)
         {
+            var MedicalRecord = _db.MedicalRecords.Find(id);
+            _db.MedicalRecords.Remove(MedicalRecord);
+            _db.SaveChanges();
+
+            return _db.MedicalRecords.ToList();
         }
     }
 }

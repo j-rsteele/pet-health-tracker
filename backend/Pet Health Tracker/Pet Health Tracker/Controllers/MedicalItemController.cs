@@ -41,9 +41,19 @@ namespace Pet_Health_Tracker.Controllers
             _db.MedicalItems.Add(MedicalItem);
             _db.SaveChanges();
 
-            MedicalItem.Pet = _db.Pets.Find(MedicalItem.PetId);
+           return MedicalItem;  // determined by what the front end wants to direct us to
+        }
 
-            return MedicalItem;
+        [HttpPut("{id}")]
+        public ActionResult<IEnumerable<MedicalItem>> Put(int id, [FromBody] MedicalItem MedicalItem)
+        {
+            if (MedicalItem.Id == id)
+            {
+                _db.MedicalItems.Update(MedicalItem);
+                _db.SaveChanges();
+            }
+
+            return _db.MedicalItems.ToList();
         }
 
         [HttpDelete("{id}")]
