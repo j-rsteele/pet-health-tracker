@@ -5,15 +5,18 @@ using System.Threading.Tasks;
 
 namespace Pet_Health_Tracker.Models
 {
-    public class Weight
+    public class Appointment
     {
         public int Id { get; set; }
-        public int CurrentWeight { get; set; }
-        public DateTime Date { get; set; }
         public int PetId { get; set; }
         public virtual Pet Pet { get; set; }
+        public DateTime ApptDateTime { get; set; }
+        public string EmailAddress { get; set; }
+        public string Caregiver { get; set; }
+        public string Description { get; set; }
+        public string Notes { get; set; }
 
-        public Weight()
+        public Appointment()
         {
 
         }
