@@ -65,4 +65,5 @@ namespace Pet_Health_Tracker
 
             return _context.Owners.ToList();
         }
+    }
 }
