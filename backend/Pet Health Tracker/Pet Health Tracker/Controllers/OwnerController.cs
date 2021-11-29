@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Pet_Health_Tracker.Models;
 using System;
 using System.Collections.Generic;
@@ -65,6 +65,4 @@ namespace Pet_Health_Tracker
 
             return _context.Owners.ToList();
         }
-
-    }
 }
