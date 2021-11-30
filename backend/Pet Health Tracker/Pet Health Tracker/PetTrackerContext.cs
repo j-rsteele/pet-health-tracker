@@ -45,9 +45,9 @@ namespace Pet_Health_Tracker
                new Pet() { Id = 3, Name = "Slim Jim", Age = 2, Species = "Ferret", Breed = "Black Sable", Gender = "Male", Photo = "", OwnerId = 1 });
 
             modelbuilder.Entity<MedicalRecord>().HasData(
-               new MedicalRecord() { Id = 1, Clinic = "Bedford Animal Hospital", PrimaryVet = "Dr. Doolittle", Phone = "440-555-1298", Street = "412 Oak Ln", City = "Bedford", ST = "OH", Zip = "44123", PetId = 1, },
-               new MedicalRecord() { Id = 2, Clinic = "Gateway Animal Hospital", PrimaryVet = "Dr. Bob", Phone = "216-555-6728", Street = "Abbey Ave", City = "Cleveland", ST = "OH", Zip = "44102", PetId = 2 },
-               new MedicalRecord() { Id = 3, Clinic = "Suburban Veterinarian Clinic", PrimaryVet = "Dr. Scott", Phone = "330-555-7263", Street = "58 Maple St", City = "Maple Heights", ST = "OH", Zip = "44242", PetId = 3 });
+               new MedicalRecord() { Id = 1, Clinic = "Bedford Animal Hospital", PrimaryVet = "Dr. Doolittle", Phone = "440-555-1298", Street = "412 Oak Ln", City = "Bedford", State = "OH", Zip = "44123" , PetId = 1, },
+               new MedicalRecord() { Id = 2, Clinic = "Gateway Animal Hospital", PrimaryVet = "Dr. Bob", Phone = "216-555-6728", Street = "Abbey Ave", City = "Cleveland", State = "OH", Zip = "44102" , PetId = 2 },
+               new MedicalRecord() { Id = 3, Clinic = "Suburban Veterinarian Clinic", PrimaryVet = "Dr. Scott", Phone = "330-555-7263", Street = "58 Maple St", City = "Maple Heights", State = "OH", Zip = "44242", PetId = 3 });
 
             modelbuilder.Entity<MedicalItem>().HasData(
                new MedicalItem() { Id = 1, MedicalRecordId = 1, ItemType = MedicalItemType.Vaccination, TreatedOn = DateTime.Now, Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna." },

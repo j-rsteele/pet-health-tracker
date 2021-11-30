@@ -3,119 +3,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Pet_Health_Tracker.Migrations
 {
-    public partial class UpdatedSeedDataAgain : Migration
+    public partial class connectedTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_MedicalItems_Pets_PetId",
-                table: "MedicalItems");
-
-            migrationBuilder.DropIndex(
-                name: "IX_MedicalRecords_PetId",
-                table: "MedicalRecords");
-
-            migrationBuilder.DropIndex(
-                name: "IX_MedicalItems_PetId",
-                table: "MedicalItems");
-
-            migrationBuilder.DropColumn(
-                name: "PetId",
-                table: "MedicalItems");
-
-            migrationBuilder.UpdateData(
-                table: "Appointments",
-                keyColumn: "Id",
-                keyValue: 1,
-                column: "ApptDateTime",
-                value: new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(7624));
-
-            migrationBuilder.UpdateData(
-                table: "Appointments",
-                keyColumn: "Id",
-                keyValue: 2,
-                column: "ApptDateTime",
-                value: new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(9631));
-
-            migrationBuilder.UpdateData(
-                table: "MedicalItems",
-                keyColumn: "Id",
-                keyValue: 1,
-                column: "TreatedOn",
-                value: new DateTime(2021, 11, 29, 15, 38, 31, 501, DateTimeKind.Local).AddTicks(7007));
-
-            migrationBuilder.UpdateData(
-                table: "MedicalItems",
-                keyColumn: "Id",
-                keyValue: 2,
-                column: "TreatedOn",
-                value: new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(2535));
-
-            migrationBuilder.UpdateData(
-                table: "MedicalItems",
-                keyColumn: "Id",
-                keyValue: 3,
-                column: "TreatedOn",
-                value: new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(2575));
-
-            migrationBuilder.UpdateData(
-                table: "MedicalItems",
-                keyColumn: "Id",
-                keyValue: 4,
-                column: "TreatedOn",
-                value: new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(2580));
-
-            migrationBuilder.UpdateData(
-                table: "MedicalItems",
-                keyColumn: "Id",
-                keyValue: 5,
-                column: "TreatedOn",
-                value: new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(2584));
-
-            migrationBuilder.UpdateData(
-                table: "MedicalItems",
-                keyColumn: "Id",
-                keyValue: 6,
-                column: "TreatedOn",
-                value: new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(2588));
-
-            migrationBuilder.UpdateData(
-                table: "Weights",
-                keyColumn: "Id",
-                keyValue: 1,
-                column: "Date",
-                value: new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(4834));
-
-            migrationBuilder.UpdateData(
-                table: "Weights",
-                keyColumn: "Id",
-                keyValue: 2,
-                column: "Date",
-                value: new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(5831));
-
-            migrationBuilder.UpdateData(
-                table: "Weights",
-                keyColumn: "Id",
-                keyValue: 3,
-                column: "Date",
-                value: new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(5858));
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MedicalRecords_PetId",
-                table: "MedicalRecords",
-                column: "PetId",
-                unique: true);
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropIndex(
-                name: "IX_MedicalRecords_PetId",
-                table: "MedicalRecords");
-
             migrationBuilder.AddColumn<int>(
                 name: "PetId",
-                table: "MedicalItems",
+                table: "MedicalRecords",
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
@@ -125,95 +19,204 @@ namespace Pet_Health_Tracker.Migrations
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "ApptDateTime",
-                value: new DateTime(2021, 11, 29, 15, 6, 48, 945, DateTimeKind.Local).AddTicks(3890));
+                value: new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(5228));
 
             migrationBuilder.UpdateData(
                 table: "Appointments",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "ApptDateTime",
-                value: new DateTime(2021, 11, 29, 15, 6, 48, 945, DateTimeKind.Local).AddTicks(5627));
+                value: new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(6599));
 
             migrationBuilder.UpdateData(
                 table: "MedicalItems",
                 keyColumn: "Id",
                 keyValue: 1,
-                columns: new[] { "PetId", "TreatedOn" },
-                values: new object[] { 1, new DateTime(2021, 11, 29, 15, 6, 48, 938, DateTimeKind.Local).AddTicks(8518) });
+                column: "TreatedOn",
+                value: new DateTime(2021, 11, 30, 11, 15, 1, 480, DateTimeKind.Local).AddTicks(2767));
 
             migrationBuilder.UpdateData(
                 table: "MedicalItems",
                 keyColumn: "Id",
                 keyValue: 2,
-                columns: new[] { "PetId", "TreatedOn" },
-                values: new object[] { 3, new DateTime(2021, 11, 29, 15, 6, 48, 944, DateTimeKind.Local).AddTicks(9925) });
+                column: "TreatedOn",
+                value: new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(1394));
 
             migrationBuilder.UpdateData(
                 table: "MedicalItems",
                 keyColumn: "Id",
                 keyValue: 3,
-                columns: new[] { "PetId", "TreatedOn" },
-                values: new object[] { 2, new DateTime(2021, 11, 29, 15, 6, 48, 944, DateTimeKind.Local).AddTicks(9961) });
+                column: "TreatedOn",
+                value: new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(1439));
 
             migrationBuilder.UpdateData(
                 table: "MedicalItems",
                 keyColumn: "Id",
                 keyValue: 4,
-                columns: new[] { "PetId", "TreatedOn" },
-                values: new object[] { 1, new DateTime(2021, 11, 29, 15, 6, 48, 944, DateTimeKind.Local).AddTicks(9965) });
+                column: "TreatedOn",
+                value: new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(1445));
 
             migrationBuilder.UpdateData(
                 table: "MedicalItems",
                 keyColumn: "Id",
                 keyValue: 5,
-                columns: new[] { "PetId", "TreatedOn" },
-                values: new object[] { 2, new DateTime(2021, 11, 29, 15, 6, 48, 944, DateTimeKind.Local).AddTicks(9969) });
+                column: "TreatedOn",
+                value: new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(1449));
 
             migrationBuilder.UpdateData(
                 table: "MedicalItems",
                 keyColumn: "Id",
                 keyValue: 6,
-                columns: new[] { "PetId", "TreatedOn" },
-                values: new object[] { 3, new DateTime(2021, 11, 29, 15, 6, 48, 944, DateTimeKind.Local).AddTicks(9972) });
+                column: "TreatedOn",
+                value: new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(1453));
+
+            migrationBuilder.UpdateData(
+                table: "MedicalRecords",
+                keyColumn: "Id",
+                keyValue: 1,
+                column: "PetId",
+                value: 1);
+
+            migrationBuilder.UpdateData(
+                table: "MedicalRecords",
+                keyColumn: "Id",
+                keyValue: 2,
+                column: "PetId",
+                value: 2);
+
+            migrationBuilder.UpdateData(
+                table: "MedicalRecords",
+                keyColumn: "Id",
+                keyValue: 3,
+                column: "PetId",
+                value: 3);
 
             migrationBuilder.UpdateData(
                 table: "Weights",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "Date",
-                value: new DateTime(2021, 11, 29, 15, 6, 48, 945, DateTimeKind.Local).AddTicks(1800));
+                value: new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(3400));
 
             migrationBuilder.UpdateData(
                 table: "Weights",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "Date",
-                value: new DateTime(2021, 11, 29, 15, 6, 48, 945, DateTimeKind.Local).AddTicks(2545));
+                value: new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(3992));
 
             migrationBuilder.UpdateData(
                 table: "Weights",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "Date",
-                value: new DateTime(2021, 11, 29, 15, 6, 48, 945, DateTimeKind.Local).AddTicks(2558));
+                value: new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(4005));
 
             migrationBuilder.CreateIndex(
                 name: "IX_MedicalRecords_PetId",
                 table: "MedicalRecords",
-                column: "PetId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MedicalItems_PetId",
-                table: "MedicalItems",
-                column: "PetId");
+                column: "PetId",
+                unique: true);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_MedicalItems_Pets_PetId",
-                table: "MedicalItems",
+                name: "FK_MedicalRecords_Pets_PetId",
+                table: "MedicalRecords",
                 column: "PetId",
                 principalTable: "Pets",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(
+                name: "FK_MedicalRecords_Pets_PetId",
+                table: "MedicalRecords");
+
+            migrationBuilder.DropIndex(
+                name: "IX_MedicalRecords_PetId",
+                table: "MedicalRecords");
+
+            migrationBuilder.DropColumn(
+                name: "PetId",
+                table: "MedicalRecords");
+
+            migrationBuilder.UpdateData(
+                table: "Appointments",
+                keyColumn: "Id",
+                keyValue: 1,
+                column: "ApptDateTime",
+                value: new DateTime(2021, 11, 30, 11, 5, 33, 3, DateTimeKind.Local).AddTicks(2847));
+
+            migrationBuilder.UpdateData(
+                table: "Appointments",
+                keyColumn: "Id",
+                keyValue: 2,
+                column: "ApptDateTime",
+                value: new DateTime(2021, 11, 30, 11, 5, 33, 3, DateTimeKind.Local).AddTicks(4590));
+
+            migrationBuilder.UpdateData(
+                table: "MedicalItems",
+                keyColumn: "Id",
+                keyValue: 1,
+                column: "TreatedOn",
+                value: new DateTime(2021, 11, 30, 11, 5, 32, 994, DateTimeKind.Local).AddTicks(5764));
+
+            migrationBuilder.UpdateData(
+                table: "MedicalItems",
+                keyColumn: "Id",
+                keyValue: 2,
+                column: "TreatedOn",
+                value: new DateTime(2021, 11, 30, 11, 5, 33, 2, DateTimeKind.Local).AddTicks(8234));
+
+            migrationBuilder.UpdateData(
+                table: "MedicalItems",
+                keyColumn: "Id",
+                keyValue: 3,
+                column: "TreatedOn",
+                value: new DateTime(2021, 11, 30, 11, 5, 33, 2, DateTimeKind.Local).AddTicks(8296));
+
+            migrationBuilder.UpdateData(
+                table: "MedicalItems",
+                keyColumn: "Id",
+                keyValue: 4,
+                column: "TreatedOn",
+                value: new DateTime(2021, 11, 30, 11, 5, 33, 2, DateTimeKind.Local).AddTicks(8304));
+
+            migrationBuilder.UpdateData(
+                table: "MedicalItems",
+                keyColumn: "Id",
+                keyValue: 5,
+                column: "TreatedOn",
+                value: new DateTime(2021, 11, 30, 11, 5, 33, 2, DateTimeKind.Local).AddTicks(8308));
+
+            migrationBuilder.UpdateData(
+                table: "MedicalItems",
+                keyColumn: "Id",
+                keyValue: 6,
+                column: "TreatedOn",
+                value: new DateTime(2021, 11, 30, 11, 5, 33, 2, DateTimeKind.Local).AddTicks(8312));
+
+            migrationBuilder.UpdateData(
+                table: "Weights",
+                keyColumn: "Id",
+                keyValue: 1,
+                column: "Date",
+                value: new DateTime(2021, 11, 30, 11, 5, 33, 3, DateTimeKind.Local).AddTicks(596));
+
+            migrationBuilder.UpdateData(
+                table: "Weights",
+                keyColumn: "Id",
+                keyValue: 2,
+                column: "Date",
+                value: new DateTime(2021, 11, 30, 11, 5, 33, 3, DateTimeKind.Local).AddTicks(1330));
+
+            migrationBuilder.UpdateData(
+                table: "Weights",
+                keyColumn: "Id",
+                keyValue: 3,
+                column: "Date",
+                value: new DateTime(2021, 11, 30, 11, 5, 33, 3, DateTimeKind.Local).AddTicks(1348));
         }
     }
 }

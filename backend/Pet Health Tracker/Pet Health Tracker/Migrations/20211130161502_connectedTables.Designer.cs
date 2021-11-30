@@ -10,8 +10,8 @@ using Pet_Health_Tracker;
 namespace Pet_Health_Tracker.Migrations
 {
     [DbContext(typeof(PetTrackerContext))]
-    [Migration("20211129203832_UpdatedSeedDataAgain")]
-    partial class UpdatedSeedDataAgain
+    [Migration("20211130161502_connectedTables")]
+    partial class connectedTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -56,7 +56,7 @@ namespace Pet_Health_Tracker.Migrations
                         new
                         {
                             Id = 1,
-                            ApptDateTime = new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(7624),
+                            ApptDateTime = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(5228),
                             Caregiver = "Dr Doolittle",
                             Description = "Annual Checkup",
                             EmailAddress = "brewster@gmail.com",
@@ -66,7 +66,7 @@ namespace Pet_Health_Tracker.Migrations
                         new
                         {
                             Id = 2,
-                            ApptDateTime = new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(9631),
+                            ApptDateTime = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(6599),
                             Caregiver = "Pet Smart Grooming",
                             Description = "Hair Trim and Bath, Toenail trim",
                             EmailAddress = "princesstrudy@gmail.com",
@@ -107,7 +107,7 @@ namespace Pet_Health_Tracker.Migrations
                             Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna.",
                             ItemType = 0,
                             MedicalRecordId = 1,
-                            TreatedOn = new DateTime(2021, 11, 29, 15, 38, 31, 501, DateTimeKind.Local).AddTicks(7007)
+                            TreatedOn = new DateTime(2021, 11, 30, 11, 15, 1, 480, DateTimeKind.Local).AddTicks(2767)
                         },
                         new
                         {
@@ -115,7 +115,7 @@ namespace Pet_Health_Tracker.Migrations
                             Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna.",
                             ItemType = 1,
                             MedicalRecordId = 3,
-                            TreatedOn = new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(2535)
+                            TreatedOn = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(1394)
                         },
                         new
                         {
@@ -123,7 +123,7 @@ namespace Pet_Health_Tracker.Migrations
                             Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna.",
                             ItemType = 2,
                             MedicalRecordId = 2,
-                            TreatedOn = new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(2575)
+                            TreatedOn = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(1439)
                         },
                         new
                         {
@@ -131,7 +131,7 @@ namespace Pet_Health_Tracker.Migrations
                             Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna.",
                             ItemType = 3,
                             MedicalRecordId = 1,
-                            TreatedOn = new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(2580)
+                            TreatedOn = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(1445)
                         },
                         new
                         {
@@ -139,7 +139,7 @@ namespace Pet_Health_Tracker.Migrations
                             Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna.",
                             ItemType = 4,
                             MedicalRecordId = 2,
-                            TreatedOn = new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(2584)
+                            TreatedOn = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(1449)
                         },
                         new
                         {
@@ -147,7 +147,7 @@ namespace Pet_Health_Tracker.Migrations
                             Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna.",
                             ItemType = 5,
                             MedicalRecordId = 3,
-                            TreatedOn = new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(2588)
+                            TreatedOn = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(1453)
                         });
                 });
 
@@ -173,7 +173,7 @@ namespace Pet_Health_Tracker.Migrations
                     b.Property<string>("PrimaryVet")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ST")
+                    b.Property<string>("State")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Street")
@@ -198,7 +198,7 @@ namespace Pet_Health_Tracker.Migrations
                             PetId = 1,
                             Phone = "440-555-1298",
                             PrimaryVet = "Dr. Doolittle",
-                            ST = "OH",
+                            State = "OH",
                             Street = "412 Oak Ln",
                             Zip = "44123"
                         },
@@ -210,7 +210,7 @@ namespace Pet_Health_Tracker.Migrations
                             PetId = 2,
                             Phone = "216-555-6728",
                             PrimaryVet = "Dr. Bob",
-                            ST = "OH",
+                            State = "OH",
                             Street = "Abbey Ave",
                             Zip = "44102"
                         },
@@ -222,7 +222,7 @@ namespace Pet_Health_Tracker.Migrations
                             PetId = 3,
                             Phone = "330-555-7263",
                             PrimaryVet = "Dr. Scott",
-                            ST = "OH",
+                            State = "OH",
                             Street = "58 Maple St",
                             Zip = "44242"
                         });
@@ -357,21 +357,21 @@ namespace Pet_Health_Tracker.Migrations
                         {
                             Id = 1,
                             CurrentWeight = 50,
-                            Date = new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(4834),
+                            Date = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(3400),
                             PetId = 1
                         },
                         new
                         {
                             Id = 2,
                             CurrentWeight = 12,
-                            Date = new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(5831),
+                            Date = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(3992),
                             PetId = 2
                         },
                         new
                         {
                             Id = 3,
                             CurrentWeight = 2,
-                            Date = new DateTime(2021, 11, 29, 15, 38, 31, 505, DateTimeKind.Local).AddTicks(5858),
+                            Date = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(4005),
                             PetId = 3
                         });
                 });

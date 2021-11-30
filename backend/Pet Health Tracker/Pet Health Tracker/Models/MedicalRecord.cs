@@ -14,9 +14,8 @@ namespace Pet_Health_Tracker.Models
         public string Phone { get; set; }
         public string Street { get; set; }
         public string City { get; set; }
-        public string ST { get; set; }
+        public string State { get; set; }
         public string Zip { get; set; }
-
 
         public virtual List<MedicalItem> MedicalItems { get; set; }
 
