@@ -39,8 +39,6 @@ namespace Pet_Health_Tracker.Controllers
             _db.MedicalRecords.Add(MedicalRecord);
             _db.SaveChanges();
 
-            MedicalRecord.Pet = _db.Pets.Find(MedicalRecord.PetId);
-
             return MedicalRecord;
         }
 

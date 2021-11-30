@@ -54,7 +54,7 @@ namespace Pet_Health_Tracker.Migrations
                         new
                         {
                             Id = 1,
-                            ApptDateTime = new DateTime(2021, 11, 29, 11, 44, 56, 732, DateTimeKind.Local).AddTicks(9891),
+                            ApptDateTime = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(5228),
                             Caregiver = "Dr Doolittle",
                             Description = "Annual Checkup",
                             EmailAddress = "brewster@gmail.com",
@@ -64,22 +64,12 @@ namespace Pet_Health_Tracker.Migrations
                         new
                         {
                             Id = 2,
-                            ApptDateTime = new DateTime(2021, 11, 29, 11, 44, 56, 733, DateTimeKind.Local).AddTicks(1439),
+                            ApptDateTime = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(6599),
                             Caregiver = "Pet Smart Grooming",
                             Description = "Hair Trim and Bath, Toenail trim",
                             EmailAddress = "princesstrudy@gmail.com",
                             Notes = "Full spa treatment",
                             PetId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ApptDateTime = new DateTime(2021, 11, 29, 11, 44, 56, 733, DateTimeKind.Local).AddTicks(1458),
-                            Caregiver = "Exotic Vet Hospital",
-                            Description = "Toenail Trim & tooth extraction",
-                            EmailAddress = "slimjim@gmail.com",
-                            Notes = "No food after midnight the night before",
-                            PetId = 3
                         });
                 });
 
@@ -106,7 +96,7 @@ namespace Pet_Health_Tracker.Migrations
 
                     b.HasIndex("MedicalRecordId");
 
-                    b.ToTable("MedicalItem");
+                    b.ToTable("MedicalItems");
 
                     b.HasData(
                         new
@@ -115,23 +105,23 @@ namespace Pet_Health_Tracker.Migrations
                             Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna.",
                             ItemType = 0,
                             MedicalRecordId = 1,
-                            TreatedOn = new DateTime(2021, 11, 29, 11, 44, 56, 728, DateTimeKind.Local).AddTicks(2113)
+                            TreatedOn = new DateTime(2021, 11, 30, 11, 15, 1, 480, DateTimeKind.Local).AddTicks(2767)
                         },
                         new
                         {
                             Id = 2,
                             Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna.",
                             ItemType = 1,
-                            MedicalRecordId = 1,
-                            TreatedOn = new DateTime(2021, 11, 29, 11, 44, 56, 731, DateTimeKind.Local).AddTicks(1576)
+                            MedicalRecordId = 3,
+                            TreatedOn = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(1394)
                         },
                         new
                         {
                             Id = 3,
                             Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna.",
                             ItemType = 2,
-                            MedicalRecordId = 1,
-                            TreatedOn = new DateTime(2021, 11, 29, 11, 44, 56, 731, DateTimeKind.Local).AddTicks(1657)
+                            MedicalRecordId = 2,
+                            TreatedOn = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(1439)
                         },
                         new
                         {
@@ -139,23 +129,23 @@ namespace Pet_Health_Tracker.Migrations
                             Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna.",
                             ItemType = 3,
                             MedicalRecordId = 1,
-                            TreatedOn = new DateTime(2021, 11, 29, 11, 44, 56, 731, DateTimeKind.Local).AddTicks(1663)
+                            TreatedOn = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(1445)
                         },
                         new
                         {
                             Id = 5,
                             Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna.",
                             ItemType = 4,
-                            MedicalRecordId = 1,
-                            TreatedOn = new DateTime(2021, 11, 29, 11, 44, 56, 731, DateTimeKind.Local).AddTicks(1666)
+                            MedicalRecordId = 2,
+                            TreatedOn = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(1449)
                         },
                         new
                         {
                             Id = 6,
                             Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna.",
                             ItemType = 5,
-                            MedicalRecordId = 1,
-                            TreatedOn = new DateTime(2021, 11, 29, 11, 44, 56, 731, DateTimeKind.Local).AddTicks(1669)
+                            MedicalRecordId = 3,
+                            TreatedOn = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(1453)
                         });
                 });
 
@@ -166,12 +156,34 @@ namespace Pet_Health_Tracker.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Clinic")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("PetId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrimaryVet")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Street")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Zip")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("PetId");
+                    b.HasIndex("PetId")
+                        .IsUnique();
 
                     b.ToTable("MedicalRecords");
 
@@ -179,17 +191,38 @@ namespace Pet_Health_Tracker.Migrations
                         new
                         {
                             Id = 1,
-                            PetId = 1
+                            City = "Bedford",
+                            Clinic = "Bedford Animal Hospital",
+                            PetId = 1,
+                            Phone = "440-555-1298",
+                            PrimaryVet = "Dr. Doolittle",
+                            State = "OH",
+                            Street = "412 Oak Ln",
+                            Zip = "44123"
                         },
                         new
                         {
                             Id = 2,
-                            PetId = 2
+                            City = "Cleveland",
+                            Clinic = "Gateway Animal Hospital",
+                            PetId = 2,
+                            Phone = "216-555-6728",
+                            PrimaryVet = "Dr. Bob",
+                            State = "OH",
+                            Street = "Abbey Ave",
+                            Zip = "44102"
                         },
                         new
                         {
                             Id = 3,
-                            PetId = 3
+                            City = "Maple Heights",
+                            Clinic = "Suburban Veterinarian Clinic",
+                            PetId = 3,
+                            Phone = "330-555-7263",
+                            PrimaryVet = "Dr. Scott",
+                            State = "OH",
+                            Street = "58 Maple St",
+                            Zip = "44242"
                         });
                 });
 
@@ -315,28 +348,28 @@ namespace Pet_Health_Tracker.Migrations
 
                     b.HasIndex("PetId");
 
-                    b.ToTable("Weight");
+                    b.ToTable("Weights");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             CurrentWeight = 50,
-                            Date = new DateTime(2021, 11, 29, 11, 44, 56, 732, DateTimeKind.Local).AddTicks(7360),
+                            Date = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(3400),
                             PetId = 1
                         },
                         new
                         {
                             Id = 2,
                             CurrentWeight = 12,
-                            Date = new DateTime(2021, 11, 29, 11, 44, 56, 732, DateTimeKind.Local).AddTicks(7971),
+                            Date = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(3992),
                             PetId = 2
                         },
                         new
                         {
                             Id = 3,
                             CurrentWeight = 2,
-                            Date = new DateTime(2021, 11, 29, 11, 44, 56, 732, DateTimeKind.Local).AddTicks(7982),
+                            Date = new DateTime(2021, 11, 30, 11, 15, 1, 484, DateTimeKind.Local).AddTicks(4005),
                             PetId = 3
                         });
                 });
@@ -344,7 +377,7 @@ namespace Pet_Health_Tracker.Migrations
             modelBuilder.Entity("Pet_Health_Tracker.Models.Appointment", b =>
                 {
                     b.HasOne("Pet_Health_Tracker.Models.Pet", "Pet")
-                        .WithMany()
+                        .WithMany("Appointments")
                         .HasForeignKey("PetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -354,20 +387,20 @@ namespace Pet_Health_Tracker.Migrations
 
             modelBuilder.Entity("Pet_Health_Tracker.Models.MedicalItem", b =>
                 {
-                    b.HasOne("Pet_Health_Tracker.Models.MedicalRecord", "Record")
+                    b.HasOne("Pet_Health_Tracker.Models.MedicalRecord", "MedicalRecord")
                         .WithMany("MedicalItems")
                         .HasForeignKey("MedicalRecordId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Record");
+                    b.Navigation("MedicalRecord");
                 });
 
             modelBuilder.Entity("Pet_Health_Tracker.Models.MedicalRecord", b =>
                 {
                     b.HasOne("Pet_Health_Tracker.Models.Pet", "Pet")
-                        .WithMany()
-                        .HasForeignKey("PetId")
+                        .WithOne("MedicalRecord")
+                        .HasForeignKey("Pet_Health_Tracker.Models.MedicalRecord", "PetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -388,7 +421,7 @@ namespace Pet_Health_Tracker.Migrations
             modelBuilder.Entity("Pet_Health_Tracker.Models.Weight", b =>
                 {
                     b.HasOne("Pet_Health_Tracker.Models.Pet", "Pet")
-                        .WithMany()
+                        .WithMany("Weights")
                         .HasForeignKey("PetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -404,6 +437,15 @@ namespace Pet_Health_Tracker.Migrations
             modelBuilder.Entity("Pet_Health_Tracker.Models.Owner", b =>
                 {
                     b.Navigation("Pets");
+                });
+
+            modelBuilder.Entity("Pet_Health_Tracker.Models.Pet", b =>
+                {
+                    b.Navigation("Appointments");
+
+                    b.Navigation("MedicalRecord");
+
+                    b.Navigation("Weights");
                 });
 #pragma warning restore 612, 618
         }
