@@ -16,7 +16,8 @@ namespace Pet_Health_Tracker.Models
         public string Photo { get; set; }
         public int OwnerId { get; set; }
         public virtual Owner Owner { get; set; }
-        public virtual List<MedicalItem> MedicalItems { get; set; }
+        //public int MedicalRecordId { get; set; }
+        public virtual MedicalRecord MedicalRecord { get; set; }
         public virtual List<Weight> Weights { get; set; }
         public virtual List<Appointment> Appointments { get; set; }
 
