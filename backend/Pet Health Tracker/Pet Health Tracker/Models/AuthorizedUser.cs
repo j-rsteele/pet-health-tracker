@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Pet_Health_Tracker.Models
 {
-	public class ApplicationUser
+	public class AuthorizedUser
 	{
 		public int Id { get; set; }
 		public string Username { get; set; }

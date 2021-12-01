@@ -15,9 +15,10 @@ namespace Pet_Health_Tracker
         public DbSet<Pet> Pets { get; set; }
 
         public DbSet<MedicalRecord> MedicalRecords { get; set; }  
-        public DbSet<MedicalItem> MedicalItems { get; set; }
+        public DbSet<MedicalItem> MedicalItems{ get; set; }
         public DbSet<Weight> Weights { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<AuthorizedUser> AuthorizedUsers { get; set; }
 
         public IConfiguration Configuration;
 
@@ -35,6 +36,10 @@ namespace Pet_Health_Tracker
 
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
+            modelbuilder.Entity<AuthorizedUser>().HasData(
+               new AuthorizedUser() { Id = 1, Username = "dfairchild", Password = "password" },
+               new AuthorizedUser() { Id = 2, Username = "ktousey", Password = "password" });
+
             modelbuilder.Entity<Owner>().HasData(
                new Owner() { Id = 1, FirstName = "Dan", LastName = "Fairchild" },
                new Owner() { Id = 2, FirstName = "Kevin", LastName = "Tousey" });
