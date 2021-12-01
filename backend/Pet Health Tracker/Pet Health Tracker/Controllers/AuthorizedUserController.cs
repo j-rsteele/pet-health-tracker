@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Pet_Health_Tracker.Models;
 using System;
 using System.Collections.Generic;
@@ -19,48 +20,140 @@ namespace Pet_Health_Tracker.Controllers
 			this._db = db;
 		}
 
-		[HttpGet]
-		public ActionResult<List<AuthorizedUser>> Get()
+		[Route("Login")]
+		[HttpPost]
+		public async Task<ActionResult<AuthorizedUser>> Login([FromBody] AuthorizedUser authorizedUser)
 		{
-			return _db.AuthorizedUsers.ToList();
+			var user = await _db.AuthorizedUsers.Where(a => a.Username == authorizedUser.Username && a.Password == EncryptPassword(authorizedUser.Password)).FirstOrDefaultAsync();
+			if (user == null)
+			{
+				return NotFound();
+			}
+			else
+			{
+				user.Password = "";
+				return user;
+			}
+		}
+
+		[HttpGet]
+		public async Task<ActionResult<IEnumerable<AuthorizedUser>>> GetAuthorizedUser()
+		{
+			List<AuthorizedUser> authorizedUsers = await _db.AuthorizedUsers.ToListAsync();
+			foreach ( AuthorizedUser authorizedUser in authorizedUsers)
+			{
+				authorizedUser.Password = "";
+				authorizedUser.Username = "";
+			}
+			return authorizedUsers;
 		}
 
 		[HttpGet("{id}")]
-		public ActionResult<AuthorizedUser> Get(int id)
+		public async Task<ActionResult<AuthorizedUser>> GetAuthorizedUser(int id)
 		{
-			return _db.AuthorizedUsers.Find(id);
-		}
+			var authorizedUser = await _db.AuthorizedUsers.FindAsync(id);
 
-		[HttpPost]
-		public ActionResult<AuthorizedUser> Post([FromBody] AuthorizedUser AuthorizedUser)
-		{
+			if (authorizedUser == null)
+			{
+				return NotFound();
+			}
 
-			_db.AuthorizedUsers.Add(AuthorizedUser);
-			_db.SaveChanges();
+			//account.Password = "";
 
-			return AuthorizedUser;  // determined by what the front end wants to direct us to
+			return authorizedUser;
 		}
 
 		[HttpPut("{id}")]
-		public ActionResult<IEnumerable<AuthorizedUser>> Put(int id, [FromBody] AuthorizedUser AuthorizedUser)
+		public async Task<IActionResult> PutAccount(int id, [FromBody] AuthorizedUser authorizedUser)
 		{
-			if (AuthorizedUser.Id == id)
+			if (id != authorizedUser.Id)
 			{
-				_db.AuthorizedUsers.Update(AuthorizedUser);
-				_db.SaveChanges();
+				return BadRequest();
 			}
 
-			return _db.AuthorizedUsers.ToList();
+			_db.Entry(authorizedUser).State = EntityState.Modified;
+			//account.Password = EncryptPassword(account.Password);
+
+			try
+			{
+				await _db.SaveChangesAsync();
+			}
+			catch (DbUpdateConcurrencyException)
+			{
+				if (!AccountExists(id))
+				{
+					return NotFound();
+				}
+				else
+				{
+					throw;
+				}
+			}
+
+			return NoContent();
+		}
+
+		private bool AccountExists(int id)
+		{
+			return _db.AuthorizedUsers.Any(e => e.Id == id);
+		}
+		[HttpPost]
+		public async Task<ActionResult<AuthorizedUser>> PostAccount([FromBody] AuthorizedUser authorizedUser)
+		{
+			var user = await _db.AuthorizedUsers.Where(a => a.Username == authorizedUser.Username).FirstOrDefaultAsync();
+			if (user != null)
+			{
+				return UnprocessableEntity();
+			}
+			else
+			{
+				authorizedUser.Password = EncryptPassword(authorizedUser.Password);
+				_db.AuthorizedUsers.Add(authorizedUser);
+				await _db.SaveChangesAsync();
+
+
+				authorizedUser.Password = "";
+				return CreatedAtAction("GetAccount", new { id = authorizedUser.Id }, authorizedUser);
+			}
 		}
 
 		[HttpDelete("{id}")]
-		public ActionResult<List<AuthorizedUser>> Delete(int id)
+		public async Task<IActionResult> DeleteAccount(int id)
 		{
-			var AuthorizedUser = _db.AuthorizedUsers.Find(id);
-			_db.AuthorizedUsers.Remove(AuthorizedUser);
-			_db.SaveChanges();
+			var authorizedUser = await _db.AuthorizedUsers.FindAsync(id);
+			if (authorizedUser == null)
+			{
+				return NotFound();
+			}
 
-			return _db.AuthorizedUsers.ToList();
+			_db.AuthorizedUsers.Remove(authorizedUser);
+			await _db.SaveChangesAsync();
+
+			return NoContent();
 		}
-	}
+
+		private string EncryptPassword(string password)
+		{
+			//var hash = "";
+			//do encryption
+
+			System.Security.Cryptography.HashAlgorithm sha = System.Security.Cryptography.SHA256.Create();
+			byte[] hash = sha.ComputeHash(System.Text.Encoding.ASCII.GetBytes(password));
+
+			//hash.ToString();
+
+			return System.Text.Encoding.Default.GetString(hash);
+
+		}
+
+		private string VerifyPassword(string hash, string password)
+		{
+			//var password = "";
+
+			if (EncryptPassword(password) == hash)
+				return password;
+			else
+				return "";
+
+		}
 }
