@@ -1,24 +1,32 @@
 import * as CONSTANTS from "../components/constants";
 import apiActions from "../api/apiActions";
 
+
 export default{
-    makeCard
+    DisplayAllPets
 }
+export function DisplayAllPets(pets) {
+    CONSTANTS.title.innerText ="Pets"
+    apiActions.getRequest(CONSTANTS.PetAPIURL, displayPets);
+    function displayPets(data){
+     CONSTANTS.content.innerHTML=`
+        <ul id="petCards">
+    ${pets.map(pet => {
+        return `
+        <li>
+        <div class="card" style="width: 18rem;">
+        <img src="${pet.photo}" class="card-img-top" alt="pet profile">
+        <div class="card-body">
+          <h5 class="card-title">${pet.name}</h5>
+          <a href="#" class="btn btn-primary">View P</a>
+        </div>
+      </div>
+        </li>
+        `;
+    }).join('')}
+        </ul>
+    `
+}}
 
-function makeCard(){
-    const sampleCard = `
 
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-`;
 
-const content = document.querySelector(".app");
-
-content.innerHTML = sampleCard;
-}
