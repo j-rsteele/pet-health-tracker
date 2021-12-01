@@ -40,7 +40,7 @@ namespace Pet_Health_Tracker.Controllers
 		public async Task<ActionResult<IEnumerable<AuthorizedUser>>> GetAuthorizedUser()
 		{
 			List<AuthorizedUser> authorizedUsers = await _db.AuthorizedUsers.ToListAsync();
-			foreach ( AuthorizedUser authorizedUser in authorizedUsers)
+			foreach (AuthorizedUser authorizedUser in authorizedUsers)
 			{
 				authorizedUser.Password = "";
 				authorizedUser.Username = "";
@@ -156,4 +156,5 @@ namespace Pet_Health_Tracker.Controllers
 				return "";
 
 		}
+	}
 }

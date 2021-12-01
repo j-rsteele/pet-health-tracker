@@ -1,6 +1,7 @@
-import * as CONSTANTS from "../components/constants";
+import * as CONSTANTS from "./constants.js";
 import owner from "../components/owner";
 import pet from "../components/pet";
+import pets from "../components/pets";
 import weight from "../components/weight";
 import authorizedUser from "../components/authorizedUser";
 import medicalItem from "../components/medicalItem";
@@ -16,8 +17,7 @@ let petList;
 
 export function SetupNavBar(){
     return `
-    <ul>
-        <li id="navHome">Home</li> 
+    <ul> 
         <li id="navPets">Pets</li>
         <li id="navAppointments">Appointments</li>
         <li id="navMedRecords">Medical Records</li>
@@ -30,6 +30,7 @@ export function SetupNavBar(){
 
 export function SetupHeaderEventListeners(){
     SetupNavBar();
+    makeCard();
 
 title.innerText = "";
 pageContent.innerHTML = `
