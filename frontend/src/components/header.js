@@ -13,6 +13,7 @@ export default{
 }
 
 export function SetupNavBar(){
+    SetupPets();
     return `
     <ul> 
         <li id="navPets">Pets</li>
@@ -22,5 +23,11 @@ export function SetupNavBar(){
         <li id="navSignOut">Sign Out</li>
     </ul>
     `;
+}
+
+function SetupPets() {
+    apiActions.getRequest(CONSTANTS.PetAPIURL, data => {
+        pets.DisplayAllPets(data);
+    });
 }
 

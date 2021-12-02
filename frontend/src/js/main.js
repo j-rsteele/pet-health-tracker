@@ -10,5 +10,4 @@ export default() => {
 
 function setupHomeNav() {
     navbar.innerHTML = Header.SetupNavBar();
-    Pets.DisplayAllPets();
 }
