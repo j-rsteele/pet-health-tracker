@@ -1,11 +1,13 @@
 import * as CONSTANTS from "./constants";
 import apiActions from "../api/apiActions";
-import Pets from "../components/pets";
 import medicalRecord from "./medicalRecord";
+import pets from "../components/pets";
 
 export default {
     PetDetails,
-    SetupMedicalPageLink
+    SetupMedicalPageLink,
+    SetupCreatePet,
+    CreatePet
 }
 
 function PetDetails(pet) {
@@ -46,7 +48,7 @@ function PetDetails(pet) {
         <input type="text" id="PetBreed"><br><br>
         <label>Pet Gender</label>
         <input type="text" id="PetGender">
-        <input type="button" onclick="someFunction()" value="submit">
+        <input type="button" id="btnSubmitPet" value="submit">
     </form>
     </div>
     `
@@ -60,12 +62,12 @@ function PetDetails(pet) {
 
     // }
     // </div>
-
 }
 
-function CreatePet() {
+function SetupCreatePet() {
     const btnAddPet = document.getElementById("btnAddPet");
-    btnAddPet.addEventListener("click", function (){
+    btnAddPet.addEventListener("click", function(){
+        console.log("check add pet button");
         const newPet = {
             Name: document.getElementById("PetName").value,
             Age: document.getElementById("PetAge").value,
@@ -74,15 +76,24 @@ function CreatePet() {
             Gender: document.getElementById("PetGender").value
             // upload picture?
         }
-
-        apiActions.postRequest("https://localhost:44313/api/albums/", newAlbum, data => {
-
-            pageContent.innerHTML = Album.DisplayAlbum(data);
-            Album.SetupEditButton();
-          
+        CreatePet(newPet);
+        apiActions.postRequest(CONSTANTS.OwnerAPIURL, newPet, data => {
+            CONSTANTS.title.innerText = "Add a New Pet";
+            CONSTANTS.content.innerHTML = pets.DisplayAllPets(data);
         });
     });
 }
+
+function CreatePet(newPet){
+    const btnSubmitPet = document.getElementById("btnSubmitPet");
+    btnSubmitPet.addEventListener("click", function(){
+        apiActions.postRequest(CONSTANTS.OwnerAPIURL, newPet, data => {
+            CONSTANTS.title.innerText = "";
+            CONSTANTS.content.innerHTML = pets.DisplayAllPets(data);
+    });
+})
+}
+
 
 
 function SetupMedicalPageLink() {
