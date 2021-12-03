@@ -63,26 +63,26 @@ function PetDetails(pet) {
 
 }
 
-function CreatePet() {
-    const btnAddPet = document.getElementById("btnAddPet");
-    btnAddPet.addEventListener("click", function (){
-        const newPet = {
-            Name: document.getElementById("PetName").value,
-            Age: document.getElementById("PetAge").value,
-            Species: document.getElementById("PetSpecies").value,
-            Breed: document.getElementById("PetBreed").value,
-            Gender: document.getElementById("PetGender").value
-            // upload picture?
-        }
+// function CreatePet() {
+//     const btnAddPet = document.getElementById("btnAddPet");
+//     btnAddPet.addEventListener("click", function (){
+//         const newPet = {
+//             Name: document.getElementById("PetName").value,
+//             Age: document.getElementById("PetAge").value,
+//             Species: document.getElementById("PetSpecies").value,
+//             Breed: document.getElementById("PetBreed").value,
+//             Gender: document.getElementById("PetGender").value
+//             // upload picture?
+//         }
 
-        apiActions.postRequest("https://localhost:44313/api/albums/", newAlbum, data => {
+//         apiActions.postRequest("https://localhost:44313/api/albums/", newAlbum, data => {
 
-            pageContent.innerHTML = Pet.DisplayPet(data);
-            Album.SetupEditButton();
+//             pageContent.innerHTML = Pet.DisplayPet(data);
+//             Album.SetupEditButton();
           
-        });
-    });
-}
+//         });
+//     });
+// }
 
 
 function SetupMedicalPageLink() {

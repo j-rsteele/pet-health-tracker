@@ -7,17 +7,17 @@ import authorizedUser from "../components/authorizedUser";
 import medicalItem from "../components/medicalItem";
 import medicalRecord from "../components/medicalRecord";
 import apiActions from "../api/apiActions";
-import { WebpackOptionsValidationError } from "webpack";
 
-export default{
+
+export default {
     SetupNavBar,
-    SetupPets,
-    SetupOwner
+    //SetupPets,
+    SetupOwner,
+    SetupPetNav
 }
 
-export function SetupNavBar(){
+export function SetupNavBar() {
     SetupPets();
-    SetupOwner();
     return `
     <ul> 
         <li id="navPets">Pets</li>
@@ -34,18 +34,22 @@ function SetupPets() {
     });
 }
 
-function SetupOwner() {
+export function SetupOwner() {
     const ownerLink = document.getElementById('navOwner');
-    
-    ownerLink.addEventListener("click", function() {
-        apiActions.getRequest(CONSTANTS.OwnerAPIURL, data => {
-            CONSTANTS.content.innerHTML = owner.DisplayOwner(data);
-            CONSTANTS.title.innerText = "Owner";
-            owner.SetupEditOwnerButton();
+
+    ownerLink.addEventListener("click", function () {
+         apiActions.getRequest(CONSTANTS.OwnerAPIURL, data => {
+        console.log("owner button clicked");
+        CONSTANTS.content.innerHTML = owner.DisplayOwner(data);
+        CONSTANTS.title.innerText = "";
+        owner.SetupEditOwnerButton(owner);
+    })
+
+    })}
+
+     function SetupPetNav(){
+        const petLink = document.getElementById('navPets');
+        petLink.addEventListener("click", function(){
+            SetupPets()
         })
-
-})
-    
-}
-
-
+     }

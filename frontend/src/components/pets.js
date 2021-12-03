@@ -6,13 +6,12 @@ import petProfile from "../components/petProfile"
 export default {
     DisplayAllPets,
     SetupPetLinks,
-    // activePet
+  
 }
 
 function DisplayAllPets(pets) {
     CONSTANTS.title.innerText = "Pets"
-    // apiActions.getRequest(CONSTANTS.PetAPIURL, displayPets);
-    // function displayPets(data){
+
     console.log("displaying pets" + pets);
     CONSTANTS.content.innerHTML =
         `
@@ -39,7 +38,6 @@ function DisplayAllPets(pets) {
 }
 
 //Button for next Page
-// let activePet;
 
 function SetupPetLinks() {
     let petLinks = document.querySelectorAll(".petBtn");
@@ -49,7 +47,6 @@ function SetupPetLinks() {
 
             let petId = this.nextElementSibling.value;
             console.log("Pet Id:" + petId);
-            // activePet = petId;
 
             apiActions.getRequest(CONSTANTS.PetAPIURL + petId, data => {
                 CONSTANTS.content.innerHTML = petProfile.PetDetails(data);
