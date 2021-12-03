@@ -77,7 +77,7 @@ function CreatePet() {
 
         apiActions.postRequest("https://localhost:44313/api/albums/", newAlbum, data => {
 
-            pageContent.innerHTML = Album.DisplayAlbum(data);
+            pageContent.innerHTML = Pet.DisplayPet(data);
             Album.SetupEditButton();
           
         });
