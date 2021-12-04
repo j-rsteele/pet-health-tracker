@@ -42,7 +42,7 @@ export function SetupOwner() {
         console.log("owner button clicked");
         CONSTANTS.content.innerHTML = owner.DisplayOwner(data);
         CONSTANTS.title.innerText = "";
-        owner.SetupEditOwnerButton(owner);
+        owner.SetupEditOwnerButton(data);
     })
 
     })}
