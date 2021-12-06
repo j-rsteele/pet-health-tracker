@@ -37,5 +37,5 @@ function SetupAddPetToOwner(){
         //console.log('add owner functionality goes here...');
             Name: document.getElementById("ownerName").value
         });
-    
+
 }

@@ -32,7 +32,7 @@ namespace Pet_Health_Tracker
             return pet;
         }
 
-        [HttpPost]
+         [HttpPost]
         public ActionResult<IEnumerable<Pet>> Post([FromBody] Pet pet)
         {
             _context.Pets.Add(pet);

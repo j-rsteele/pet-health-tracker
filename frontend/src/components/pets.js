@@ -16,8 +16,7 @@ function DisplayAllPets(pets) {
         `
         <ul id="petCards">
 
-            ${pets.map(pet =>{
-            
+            ${pets.map(pet => {
                 return `
                     <li>
                     <div class="card" style="width: 18rem;">
@@ -32,7 +31,8 @@ function DisplayAllPets(pets) {
                 `
             }).join('')}
         </ul>
-        <button id="btnAddPet">Add Pet</button>`;
+        <button id="btnAddPet">Add Pet</button>
+    `;
 
 }
 
@@ -49,6 +49,7 @@ function SetupPetLinks() {
 
             apiActions.getRequest(CONSTANTS.PetAPIURL + petId, data => {
                 CONSTANTS.content.innerHTML = petProfile.PetDetails(data);
+                petProfile.SetupCreatePet()
             });
         });
     })

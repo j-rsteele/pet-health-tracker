@@ -1,6 +1,8 @@
 export default {
     getRequest,
+    getRequestASYNC,
     postRequest,
+    postRequestASYNC,
     deleteRequest,
     putRequest
 }
@@ -15,7 +17,33 @@ function getRequest(location, callback){
     .catch(err => console.log(err));
 }
 
+async function getRequestASYNC(location, callback){
+    console.log(location);
+    fetch(location)
+    .then(response => response.json())
+    .then(data => {
+        callback(data);
+    })
+    .catch(err => console.log(err));
+}
+
 function postRequest(location, requestBody, callback){
+    console.log(location);
+    fetch(`${location}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(requestBody)
+    })
+    .then(response => response.json())
+    .then(data => {
+        callback(data);
+    })
+    .catch(err => console.log(err));
+}
+
+async function postRequestASYNC(location, requestBody, callback){
     console.log(location);
     fetch(`${location}`, {
         method: "POST",

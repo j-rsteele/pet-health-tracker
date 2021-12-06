@@ -1,6 +1,5 @@
 import * as CONSTANTS from "./constants.js";
 import owner from "../components/owner";
-import pet from "./petProfile";
 import pets from "../components/pets";
 import weight from "../components/weight";
 import authorizedUser from "../components/authorizedUser";
@@ -32,7 +31,6 @@ function SetupPets() {
         pets.DisplayAllPets(data);
         pets.SetupPetLinks();
         petProfile.SetupCreatePet();
-        petProfile.CreatePet();
     });
 }
 
