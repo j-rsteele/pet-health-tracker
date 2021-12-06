@@ -7,11 +7,12 @@ import authorizedUser from "../components/authorizedUser";
 import medicalItem from "../components/medicalItem";
 import medicalRecord from "../components/medicalRecord";
 import apiActions from "../api/apiActions";
+import about from "../components/about";
 
 
 export default {
     SetupNavBar,
-    //SetupPets,
+    SetupAboutNav,
     SetupOwner,
     SetupPetNav
 }
@@ -22,7 +23,7 @@ export function SetupNavBar() {
     <ul> 
         <li id="navPets">Pets</li>
         <li id="navOwner">Owner</li>
-        <li id="about">About</li>
+        <li id="navAbout">About</li>
     </ul>
     `;
 }
@@ -38,7 +39,7 @@ export function SetupOwner() {
     const ownerLink = document.getElementById('navOwner');
 
     ownerLink.addEventListener("click", function () {
-         apiActions.getRequest(CONSTANTS.OwnerAPIURL, data => {
+         apiActions.getRequest(CONSTANTS.OwnerAPIURL+"1", data => {
         console.log("owner button clicked");
         CONSTANTS.content.innerHTML = owner.DisplayOwner(data);
         CONSTANTS.title.innerText = "";
@@ -53,3 +54,13 @@ export function SetupOwner() {
             SetupPets()
         })
      }
+
+     function SetupAboutNav(){
+        const aboutLink = document.getElementById('navAbout');
+        aboutLink.addEventListener("click", function(){
+            about.SetupAbout();
+            
+        })
+    }
+
+  

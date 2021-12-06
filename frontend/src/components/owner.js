@@ -48,6 +48,7 @@ function EditOwner(owner) {
     console.log(owner);
     return `
     <h4>Owner Information</h4>
+        <input type="hidden" value="${owner.id}" id="owner_id" />
         <input type="text" value="${owner.firstName}" id="owner_first" />
         <input type="text" value="${owner.lastName}" id="owner_last" />
         <button id="btnSaveOwner">Update</button>
@@ -65,14 +66,16 @@ function SetupEditOwnerButton(owner) {
 function SetupSaveOwnerButton() {
     let btnSave = document.getElementById("btnSaveOwner");
     btnSave.addEventListener("click", function () {
+        let OwnerId = document.getElementById("owner_id").value;
         let OwnerFirst = document.getElementById("owner_first").value;
         let OwnerLast = document.getElementById("owner_last").value;
         const editOwner = {
-            Id: 1,
+            Id: OwnerId,
             FirstName: OwnerFirst,
             LastName: OwnerLast
         }
         apiActions.putRequest(CONSTANTS.OwnerAPIURL, OwnerId, editOwner, data => {
+            console.log(data)
             CONSTANTS.content.innerHTML = DisplayOwner(data);
             //SetupEditOwnerButton();
         });

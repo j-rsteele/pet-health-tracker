@@ -1,4 +1,4 @@
-export const OwnerAPIURL = 'https://localhost:44322/api/Owner/1';
+export const OwnerAPIURL = 'https://localhost:44322/api/Owner/';
 
 export const PetAPIURL = 'https://localhost:44322/api/Pet/';
 export const MedicalItemsAPIURL = 'https://localhost:44322/api/MedicalItem/';

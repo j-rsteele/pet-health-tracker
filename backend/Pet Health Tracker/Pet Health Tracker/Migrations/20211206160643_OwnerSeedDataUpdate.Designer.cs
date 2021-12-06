@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pet_Health_Tracker;
 
 namespace Pet_Health_Tracker.Migrations
 {
     [DbContext(typeof(PetTrackerContext))]
-    partial class PetTrackerContextModelSnapshot : ModelSnapshot
+    [Migration("20211206160643_OwnerSeedDataUpdate")]
+    partial class OwnerSeedDataUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,7 +56,7 @@ namespace Pet_Health_Tracker.Migrations
                         new
                         {
                             Id = 1,
-                            ApptDateTime = new DateTime(2021, 12, 6, 11, 10, 52, 50, DateTimeKind.Local).AddTicks(9613),
+                            ApptDateTime = new DateTime(2021, 12, 6, 11, 6, 42, 87, DateTimeKind.Local).AddTicks(188),
                             Caregiver = "Dr Doolittle",
                             Description = "Annual Checkup",
                             EmailAddress = "brewster@gmail.com",
@@ -64,7 +66,7 @@ namespace Pet_Health_Tracker.Migrations
                         new
                         {
                             Id = 2,
-                            ApptDateTime = new DateTime(2021, 12, 6, 11, 10, 52, 51, DateTimeKind.Local).AddTicks(1794),
+                            ApptDateTime = new DateTime(2021, 12, 6, 11, 6, 42, 87, DateTimeKind.Local).AddTicks(1909),
                             Caregiver = "Pet Smart Grooming",
                             Description = "Hair Trim and Bath, Toenail trim",
                             EmailAddress = "princesstrudy@gmail.com",
@@ -95,7 +97,13 @@ namespace Pet_Health_Tracker.Migrations
                         {
                             Id = 1,
                             Password = "password",
-                            Username = "username"
+                            Username = "dfairchild"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Password = "password",
+                            Username = "ktousey"
                         });
                 });
 
@@ -131,7 +139,7 @@ namespace Pet_Health_Tracker.Migrations
                             Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna.",
                             ItemType = 0,
                             MedicalRecordId = 1,
-                            TreatedOn = new DateTime(2021, 12, 6, 11, 10, 52, 43, DateTimeKind.Local).AddTicks(2953)
+                            TreatedOn = new DateTime(2021, 12, 6, 11, 6, 42, 81, DateTimeKind.Local).AddTicks(2177)
                         },
                         new
                         {
@@ -139,7 +147,7 @@ namespace Pet_Health_Tracker.Migrations
                             Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna.",
                             ItemType = 1,
                             MedicalRecordId = 3,
-                            TreatedOn = new DateTime(2021, 12, 6, 11, 10, 52, 50, DateTimeKind.Local).AddTicks(5409)
+                            TreatedOn = new DateTime(2021, 12, 6, 11, 6, 42, 86, DateTimeKind.Local).AddTicks(6331)
                         },
                         new
                         {
@@ -147,7 +155,7 @@ namespace Pet_Health_Tracker.Migrations
                             Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna.",
                             ItemType = 2,
                             MedicalRecordId = 2,
-                            TreatedOn = new DateTime(2021, 12, 6, 11, 10, 52, 50, DateTimeKind.Local).AddTicks(5450)
+                            TreatedOn = new DateTime(2021, 12, 6, 11, 6, 42, 86, DateTimeKind.Local).AddTicks(6373)
                         },
                         new
                         {
@@ -155,7 +163,7 @@ namespace Pet_Health_Tracker.Migrations
                             Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna.",
                             ItemType = 3,
                             MedicalRecordId = 1,
-                            TreatedOn = new DateTime(2021, 12, 6, 11, 10, 52, 50, DateTimeKind.Local).AddTicks(5455)
+                            TreatedOn = new DateTime(2021, 12, 6, 11, 6, 42, 86, DateTimeKind.Local).AddTicks(6377)
                         },
                         new
                         {
@@ -163,7 +171,7 @@ namespace Pet_Health_Tracker.Migrations
                             Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna.",
                             ItemType = 4,
                             MedicalRecordId = 2,
-                            TreatedOn = new DateTime(2021, 12, 6, 11, 10, 52, 50, DateTimeKind.Local).AddTicks(5460)
+                            TreatedOn = new DateTime(2021, 12, 6, 11, 6, 42, 86, DateTimeKind.Local).AddTicks(6381)
                         },
                         new
                         {
@@ -171,7 +179,7 @@ namespace Pet_Health_Tracker.Migrations
                             Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna.",
                             ItemType = 5,
                             MedicalRecordId = 3,
-                            TreatedOn = new DateTime(2021, 12, 6, 11, 10, 52, 50, DateTimeKind.Local).AddTicks(5464)
+                            TreatedOn = new DateTime(2021, 12, 6, 11, 6, 42, 86, DateTimeKind.Local).AddTicks(6384)
                         });
                 });
 
@@ -375,21 +383,21 @@ namespace Pet_Health_Tracker.Migrations
                         {
                             Id = 1,
                             CurrentWeight = 50,
-                            Date = new DateTime(2021, 12, 6, 11, 10, 52, 50, DateTimeKind.Local).AddTicks(7394),
+                            Date = new DateTime(2021, 12, 6, 11, 6, 42, 86, DateTimeKind.Local).AddTicks(8120),
                             PetId = 1
                         },
                         new
                         {
                             Id = 2,
                             CurrentWeight = 12,
-                            Date = new DateTime(2021, 12, 6, 11, 10, 52, 50, DateTimeKind.Local).AddTicks(8174),
+                            Date = new DateTime(2021, 12, 6, 11, 6, 42, 86, DateTimeKind.Local).AddTicks(8852),
                             PetId = 2
                         },
                         new
                         {
                             Id = 3,
                             CurrentWeight = 2,
-                            Date = new DateTime(2021, 12, 6, 11, 10, 52, 50, DateTimeKind.Local).AddTicks(8187),
+                            Date = new DateTime(2021, 12, 6, 11, 6, 42, 86, DateTimeKind.Local).AddTicks(8864),
                             PetId = 3
                         });
                 });

@@ -37,16 +37,14 @@ namespace Pet_Health_Tracker
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
             modelbuilder.Entity<AuthorizedUser>().HasData(
-               new AuthorizedUser() { Id = 1, Username = "dfairchild", Password = "password" },
-               new AuthorizedUser() { Id = 2, Username = "ktousey", Password = "password" });
+               new AuthorizedUser() { Id = 1, Username = "username", Password = "password" });
 
             modelbuilder.Entity<Owner>().HasData(
-               new Owner() { Id = 1, FirstName = "Dan", LastName = "Fairchild" },
-               new Owner() { Id = 2, FirstName = "Kevin", LastName = "Tousey" });
+               new Owner() { Id = 1, FirstName = "First", LastName = "Last" });
 
             modelbuilder.Entity<Pet>().HasData(
                new Pet() { Id = 1, Name = "Brewster", Age = 7, Species = "Dog", Breed = "Husky Mix", Gender = "Male", Photo = "", OwnerId = 1 },
-               new Pet() { Id = 2, Name = "Princess Trudy", Age = 6, Species = "Dog", Breed = "Maltese", Gender = "Female", Photo = "", OwnerId = 2 },
+               new Pet() { Id = 2, Name = "Princess Trudy", Age = 6, Species = "Dog", Breed = "Maltese", Gender = "Female", Photo = "", OwnerId = 1 },
                new Pet() { Id = 3, Name = "Slim Jim", Age = 2, Species = "Ferret", Breed = "Black Sable", Gender = "Male", Photo = "", OwnerId = 1 });
 
             modelbuilder.Entity<MedicalRecord>().HasData(
