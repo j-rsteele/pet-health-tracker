@@ -4,10 +4,12 @@ import * as CONSTANTS from "../components/constants";
 const navbar = document.getElementById("navbar");
 import apiActions from "../api/apiActions";
 
-export default() => {
+export default () => {
     setupHomeNav();
 }
 
 function setupHomeNav() {
     navbar.innerHTML = Header.SetupNavBar();
+    Header.SetupOwner();
+    Header.SetupPetNav();
 }

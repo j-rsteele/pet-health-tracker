@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pet_Health_Tracker;
 
 namespace Pet_Health_Tracker.Migrations
 {
     [DbContext(typeof(PetTrackerContext))]
-    partial class PetTrackerContextModelSnapshot : ModelSnapshot
+    [Migration("20211206161053_AuthorizedUserSeedData")]
+    partial class AuthorizedUserSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

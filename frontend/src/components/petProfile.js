@@ -33,6 +33,22 @@ function PetDetails(pet) {
     <li>Address: ${pet.medicalRecord.street + " " + pet.medicalRecord.city + " " + pet.medicalRecord.state + " " + pet.medicalRecord.zip}</li>
     </ol>
     </div>
+
+    <div id="createPet">
+    <form>
+    <label>Pet Name</label>
+        <input type="text" id="PetName"><br><br>
+        <label>Pet Age</label>
+        <input type="text" id="PetAge"><br><br>
+        <label>Pet Species</label>
+        <input type="text" id="PetSpecies"><br><br>
+        <label>Pet Breed</label>
+        <input type="text" id="PetBreed"><br><br>
+        <label>Pet Gender</label>
+        <input type="text" id="PetGender">
+        <input type="button" onclick="someFunction()" value="submit">
+    </form>
+    </div>
     `
     // /*<div id="medicalItems">
     // ${pet.medicalRecord.medicalItems.foreach(item => {
@@ -46,6 +62,27 @@ function PetDetails(pet) {
     // </div>
 
 }
+
+// function CreatePet() {
+//     const btnAddPet = document.getElementById("btnAddPet");
+//     btnAddPet.addEventListener("click", function (){
+//         const newPet = {
+//             Name: document.getElementById("PetName").value,
+//             Age: document.getElementById("PetAge").value,
+//             Species: document.getElementById("PetSpecies").value,
+//             Breed: document.getElementById("PetBreed").value,
+//             Gender: document.getElementById("PetGender").value
+//             // upload picture?
+//         }
+
+//         apiActions.postRequest("https://localhost:44313/api/albums/", newAlbum, data => {
+
+//             pageContent.innerHTML = Pet.DisplayPet(data);
+//             Album.SetupEditButton();
+          
+//         });
+//     });
+// }
 
 
 function SetupMedicalPageLink() {
