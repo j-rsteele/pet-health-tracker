@@ -63,7 +63,7 @@ namespace Pet_Health_Tracker.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<IEnumerable<Owner>> Put(int id, [FromBody] Owner owner)
+        public ActionResult<Owner> Put(int id, [FromBody] Owner owner)
         {
             if (owner.Id == id)
             {
@@ -71,7 +71,7 @@ namespace Pet_Health_Tracker.Controllers
                 _context.SaveChanges();
             }
 
-            return _context.Owners.ToList();
+            return _context.Owners.Find(id);
         }
     }
 }
