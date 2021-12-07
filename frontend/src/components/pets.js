@@ -1,11 +1,14 @@
 import * as CONSTANTS from "../components/constants";
 import apiActions from "../api/apiActions";
-import petProfile from "../components/petProfile"
+import petProfile from "../components/petProfile";
+import header from "../components/header";
 
 
 export default {
     DisplayAllPets,
-    SetupPetLinks
+    SetupPetLinks,
+    SetupAddPetButton,
+    RemovePet
 }
 
 function DisplayAllPets(pets) {
@@ -24,6 +27,7 @@ function DisplayAllPets(pets) {
                     <div class="card-body">
                     <h5 class="card-title">${pet.name}</h5>
                     <a href="#" class="btn btn-primary petBtn" id="${pet.id}">View Pet</a>
+                    <a href="#" class="btn btn-primary petDeleteBtn" id="${pet.id}">Delete Pet</a>
                     <input type='hidden' value='${pet.id}' />
                     </div>
                     </div>
@@ -33,7 +37,32 @@ function DisplayAllPets(pets) {
         </ul>
         <button id="btnAddPet">Add Pet</button>
     `;
+}
 
+function SetupAddPetButton() {
+    const addPetButton = document.getElementById('btnAddPet');
+    addPetButton.addEventListener('click', function() {
+        console.log("add pet button connected");
+        CONSTANTS.content.innerHTML = petProfile.SetupCreatePetForm();
+        petProfile.SetupCreatePet();
+    });
+}
+
+function RemovePet() {
+    console.log("removing pet...");
+    let petLinks = document.querySelectorAll(".petDeleteBtn");
+    petLinks.forEach(petLink => {
+
+        petLink.addEventListener("click", function (evt) {
+
+            let petId = this.nextElementSibling.value;
+            console.log("Pet Delete Id:" + petId);
+
+            apiActions.deleteRequest(CONSTANTS.PetAPIURL, petId, data => {
+                CONSTANTS.content.innerHTML = header.SetupPets();
+            }); 
+        });
+    })
 }
 
 

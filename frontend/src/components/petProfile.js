@@ -9,6 +9,7 @@ export default {
     SetupCreatePet,
     CreatePet,
     EditPet,
+    SetupCreatePetForm
 }
 
 function PetDetails(pet) {
@@ -36,7 +37,21 @@ function PetDetails(pet) {
     <li>Address: ${pet.medicalRecord.street + " " + pet.medicalRecord.city + " " + pet.medicalRecord.state + " " + pet.medicalRecord.zip}</li>
     </ol>
     </div>
+    `
+    // /*<div id="medicalItems">
+    // ${pet.medicalRecord.medicalItems.foreach(item => {
+    //     return `
+    //         ${item.description}
 
+    //     `
+    // })
+
+    // }
+    // </div>
+}
+
+function SetupCreatePetForm() {
+    return `
     <div id="createPet">
     <form>
     <label>Pet Name</label>
@@ -53,16 +68,6 @@ function PetDetails(pet) {
     </form>
     </div>
     `
-    // /*<div id="medicalItems">
-    // ${pet.medicalRecord.medicalItems.foreach(item => {
-    //     return `
-    //         ${item.description}
-
-    //     `
-    // })
-
-    // }
-    // </div>
 }
 
 function SetupCreatePet() {
