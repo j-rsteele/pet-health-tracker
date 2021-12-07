@@ -80,35 +80,54 @@ function SetupCreatePet() {
             // upload picture?
         }
         CreatePet(newPet);
-        CONSTANTS.content.innerHTML = pets.DisplayAllPets(data);
     });
 }
 
-function CreatePet(newPet){
+async function CreatePetOLD(newPet){
         console.log("added new pet");
-        apiActions.postRequest(CONSTANTS.PetAPIURL, newPet, data => {
-            CONSTANTS.title.innerText = "";
-            console.log(data);
+        let pet = await apiActions.postRequest(CONSTANTS.PetAPIURL, newPet, data => {
+            return data;
             //CreateMedicalRecord(newPet);
     });
+    console.log(pet);
 }
 
-async function CreateMedicalRecord(newPet){
-    let petId = 0;
-    await apiActions.getRequestASYNC(`https://localhost:44322/api/Owner/${newPet.OwnerId}/${newPet.Name}`, function(){
-        console.log(data);
-        petId = data.Id
-    });
-    console.log(petId);
-    let medicalRecord = {
+async function CreatePet(newPet) {
+    let pet = await fetch(CONSTANTS.PetAPIURL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newPet)
+    })
+    .then(response => response.json())
+    
+    let petId = pet.id;
+
+    let newRecord = {
         Id: 0,
+        Clinic: "",
+        PrimaryVet: "",
+        Phone: "",
+        Street: "",
+        City: "",
+        State: "",
+        Zip: "",
         PetId: petId
     }
-    apiActions.postRequest(CONSTANTS.MedicalRecordAPIURL, medicalRecord, data => {
-        CONSTANTS.title.innerText = "";
-        console.log(data);
-        CONSTANTS.content.innerHTML = pets.DisplayAllPets(data);
-});
+
+    let medicalRecord = await fetch(CONSTANTS.MedicalRecordAPIURL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newRecord)
+    })
+    .then(response => response.json())
+    console.log(medicalRecord);
+    
+    pet.medicalRecord = medicalRecord;
+    CONSTANTS.content.innerHTML = PetDetails(pet);
 }
 
 function EditPet(pet) {

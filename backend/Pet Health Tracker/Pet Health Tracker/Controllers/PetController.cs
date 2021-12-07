@@ -32,13 +32,13 @@ namespace Pet_Health_Tracker
             return pet;
         }
 
-         [HttpPost]
-        public ActionResult<IEnumerable<Pet>> Post([FromBody] Pet pet)
+        [HttpPost]
+        public ActionResult<Pet> Post([FromBody] Pet pet)
         {
             _context.Pets.Add(pet);
             _context.SaveChanges();
 
-            return _context.Pets.ToList();
+            return pet;
         }
 
         [HttpDelete("{id}")]
