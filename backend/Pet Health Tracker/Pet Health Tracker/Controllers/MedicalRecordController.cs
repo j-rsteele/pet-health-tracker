@@ -43,7 +43,7 @@ namespace Pet_Health_Tracker.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<IEnumerable<MedicalRecord>> Put(int id, [FromBody] MedicalRecord MedicalRecord)
+        public ActionResult<MedicalRecord> Put(int id, [FromBody] MedicalRecord MedicalRecord)
         {
             if (MedicalRecord.Id == id)
             {
@@ -51,7 +51,7 @@ namespace Pet_Health_Tracker.Controllers
                 _db.SaveChanges();
             }
 
-            return _db.MedicalRecords.ToList();
+            return MedicalRecord;
         }
 
         [HttpDelete("{id}")]

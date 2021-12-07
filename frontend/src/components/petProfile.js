@@ -1,17 +1,21 @@
 import * as CONSTANTS from "./constants";
 import apiActions from "../api/apiActions";
 import medicalRecord from "./medicalRecord";
-import pets from "../components/pets";
+import petProfile from "../components/petProfile";
+import pets from "../components/pets"
 
 export default {
     PetDetails,
-    SetupMedicalPageLink,
+    SetupMedicalPageButton,
     SetupCreatePet,
     CreatePet,
     EditPet,
+    SetupUpdateMedicalRecord,
+    //SetupPetProfileEventListeners
 }
 
 function PetDetails(pet) {
+    
     return `
     <div id="details">
     <ul>
@@ -24,7 +28,7 @@ function PetDetails(pet) {
     </ul>
     <div id="divMedicalInfo"></div>
     <div id="divWeightPage"></div>
-    <button class="btn btn-primary btnMedicalPage">Medical Record</button>
+    <button class="btn btn-primary" id="btnMedicalPage">Medical Record</button>
     <button class="btn btn-primary btnWeightPage">Weight Tracker</button>
     <button class="btn btn-primary btnAppointmentsPage">Appointments</button>
     </div>
@@ -35,6 +39,7 @@ function PetDetails(pet) {
     <li>Phone: ${pet.medicalRecord.phone}</li>
     <li>Address: ${pet.medicalRecord.street + " " + pet.medicalRecord.city + " " + pet.medicalRecord.state + " " + pet.medicalRecord.zip}</li>
     </ol>
+    <button class="btn btn-primary" id="btnUpdateMedicalRecord">Update</button>
     </div>
 
     <div id="createPet">
@@ -53,16 +58,6 @@ function PetDetails(pet) {
     </form>
     </div>
     `
-    // /*<div id="medicalItems">
-    // ${pet.medicalRecord.medicalItems.foreach(item => {
-    //     return `
-    //         ${item.description}
-
-    //     `
-    // })
-
-    // }
-    // </div>
 }
 
 function SetupCreatePet() {
@@ -83,14 +78,14 @@ function SetupCreatePet() {
     });
 }
 
-async function CreatePetOLD(newPet){
-        console.log("added new pet");
-        let pet = await apiActions.postRequest(CONSTANTS.PetAPIURL, newPet, data => {
-            return data;
-            //CreateMedicalRecord(newPet);
-    });
-    console.log(pet);
-}
+// async function CreatePetOLD(newPet){
+//         console.log("added new pet");
+//         let pet = await apiActions.postRequest(CONSTANTS.PetAPIURL, newPet, data => {
+//             return data;
+//             //CreateMedicalRecord(newPet);
+//     });
+//     console.log(pet);
+// }
 
 async function CreatePet(newPet) {
     let pet = await fetch(CONSTANTS.PetAPIURL, {
@@ -130,15 +125,27 @@ async function CreatePet(newPet) {
     CONSTANTS.content.innerHTML = PetDetails(pet);
 }
 
+// function SetupPetProfileEventListeners(){
+//     //SetupEditPetButton();
+//     //SetupDeletePetButton();
+//     SetupMedicalPageButton();
+//     SetupUpdateMedicalRecord();
+
+// }
+
+// function SetupDeletePetButton(){
+
+// }
+
 function EditPet(pet) {
     console.log('edit pet button');
     return `
         <input type="text" value="${pet.name}" id="PetName" />
-        <input type="text" value="${owner.age}" id="PetAge" />
-        <input type="text" value="${owner.species}" id="PetSpecies" />
-        <input type="text" value="${owner.breed}" id="PetBreed" />
-        <input type="text" value="${owner.gender}" id="PetGender" />
-        <button id="btnSaveOwner">Update</button>
+        <input type="text" value="${pet.age}" id="PetAge" />
+        <input type="text" value="${pet.species}" id="PetSpecies" />
+        <input type="text" value="${pet.breed}" id="PetBreed" />
+        <input type="text" value="${pet.gender}" id="PetGender" />
+        <button id="btnSaveUpdatePet">Save</button>
     `;
 }
 
@@ -147,43 +154,29 @@ export function SetupEditPetButton(pet) {
     let btnEditPet = document.getElementById("btnEditPet");
     btnEditPet.addEventListener("click", function () {
         CONSTANTS.content.innerHTML = EditPet(pet);
-        SetupSaveOwnerButton();
     });
 }
 
-// function CreatePet() {
-//     const btnAddPet = document.getElementById("btnAddPet");
-//     btnAddPet.addEventListener("click", function (){
-//         const newPet = {
-//             Name: document.getElementById("PetName").value,
-//             Age: document.getElementById("PetAge").value,
-//             Species: document.getElementById("PetSpecies").value,
-//             Breed: document.getElementById("PetBreed").value,
-//             Gender: document.getElementById("PetGender").value
-//             // upload picture?
-//         }
-
-//         apiActions.postRequest("https://localhost:44313/api/albums/", newAlbum, data => {
-
-//             pageContent.innerHTML = Pet.DisplayPet(data);
-//             Album.SetupEditButton();
-          
-//         });
-//     });
-// }
+function SetupUpdateMedicalRecord(data) {
+    let updateMedicalRecord = document.getElementById("btnUpdateMedicalRecord");
 
 
+        updateMedicalRecord.addEventListener("click", function() {
+            console.log(data);
+            CONSTANTS.content.innerHTML = medicalRecord.UpdateMedicalRecord(data);
+            medicalRecord.SetupMedicalRecordSaveButton();
+        });
+};
 
-function SetupMedicalPageLink() {
-    let medicalLink = document.querySelectorAll(".btnMedicalPage");
+
+function SetupMedicalPageButton(data) {
+    let medicalLink = document.getElementById("btnMedicalPage");
 
         medicalLink.addEventListener("click", function() {
+            console.log("medical page button clicked");
 
-            // let petId = this.nextElementSibling.value;
-            // console.log("Pet Id:" + petId);
-
-            apiActions.getRequest(CONSTANTS.MedicalRecordAPIURL + petId, data => {
                 CONSTANTS.content.innerHTML = medicalRecord.MedicalDetails(data);
-            });
+                SetupUpdateMedicalRecord();
+      
         });
 };

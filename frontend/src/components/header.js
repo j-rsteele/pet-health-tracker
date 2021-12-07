@@ -33,6 +33,7 @@ function SetupPets() {
         pets.DisplayAllPets(data);
         pets.SetupPetLinks();
         petProfile.SetupCreatePet();
+        petProfile.SetupMedicalPageButton();
     });
 }
 

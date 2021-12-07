@@ -49,7 +49,9 @@ function SetupPetLinks() {
 
             apiActions.getRequest(CONSTANTS.PetAPIURL + petId, data => {
                 CONSTANTS.content.innerHTML = petProfile.PetDetails(data);
-                petProfile.SetupCreatePet()
+                petProfile.SetupCreatePet();
+                petProfile.SetupMedicalPageButton(data);
+                petProfile.SetupUpdateMedicalRecord(data);
             });
         });
     })
