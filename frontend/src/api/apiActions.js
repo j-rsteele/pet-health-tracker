@@ -18,7 +18,7 @@ function getRequest(location, callback){
 function postRequest(location, requestBody, callback){
     console.log(location);
     fetch(`${location}`, {
-        method: "POST", 
+        method: "POST",
         headers: {
             "Content-Type": "application/json"
         },

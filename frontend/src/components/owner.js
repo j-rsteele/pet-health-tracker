@@ -6,7 +6,6 @@ export default {
     SetupEditOwnerButton,
     //SetupAddOwner,
     EditOwner
-    // SetupOwnerDeleteButton
 }
 
 
@@ -81,19 +80,3 @@ function SetupSaveOwnerButton() {
         });
     });
 }
-
-// delete owner
-
-// function SetupOwnerDeleteButton(){
-//         .addEventListener('click', function(){
-//             let id = element.id;
-
-//             apiActions.deleteRequest("https://localhost:44313/api/albums/", id, data => {
-//                console.log("delete successful");
-//                console.log(data);
-//                 pageContent.innerHTML = DisplayAlbums(data);
-//                 Header.GetAllArtists(); // figure out how to call GetAllArtsists
-//                 SetupAddAlbum();
-//             });
-//         });
-//     }

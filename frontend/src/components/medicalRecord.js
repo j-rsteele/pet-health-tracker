@@ -1,12 +1,12 @@
 import * as CONSTANTS from "./constants";
 import apiActions from "../api/apiActions";
-import Pets from "../components/pets";
+import pets from "../components/pets";
 
 export default{
     MedicalDetails
 }
 
-let activeMedicalRecord = Pets.activePet;
+//let activeMedicalRecord = pets.activePet;
 
 function MedicalDetails(){
     return `

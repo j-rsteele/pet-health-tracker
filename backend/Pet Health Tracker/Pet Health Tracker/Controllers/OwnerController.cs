@@ -34,6 +34,13 @@ namespace Pet_Health_Tracker.Controllers
             return owner;
         }
 
+        [HttpGet("{id}/{name}")]
+        public ActionResult<Pet> Get(int id, string name)
+        {
+            Pet pet = _context.Owners.Find(id).Pets.Where(p => p.Name == name).FirstOrDefault();
+            return pet;
+        }
+
         [HttpPost]
         public ActionResult<IEnumerable<Owner>> Post([FromBody] Owner owner)
         {
