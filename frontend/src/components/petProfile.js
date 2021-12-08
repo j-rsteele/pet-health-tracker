@@ -176,7 +176,7 @@ function SetupMedicalPageButton(data) {
             console.log("medical page button clicked");
 
                 CONSTANTS.content.innerHTML = medicalRecord.MedicalDetails(data);
-                SetupUpdateMedicalRecord();
-      
+                //SetupUpdateMedicalRecord();
+                medicalRecord.setupMedicalItemLinks();      
         });
 };

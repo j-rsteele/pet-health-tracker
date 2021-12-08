@@ -1,6 +1,7 @@
 import * as CONSTANTS from "../components/constants";
 import apiActions from "../api/apiActions";
 import petProfile from "../components/petProfile"
+import medicalRecord from "./medicalRecord";
 
 
 export default {
