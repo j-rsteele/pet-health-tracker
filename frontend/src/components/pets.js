@@ -57,7 +57,7 @@ function RemovePet() {
 
         petLink.addEventListener("click", function (evt) {
 
-            let petId = this.nextElementSibling.value;
+            let petId = petLink.id;
             console.log("Pet Delete Id:" + petId);
 
             apiActions.deleteRequest(CONSTANTS.PetAPIURL, petId, data => {
@@ -75,12 +75,11 @@ function SetupPetLinks() {
 
         petLink.addEventListener("click", function (evt) {
 
-            let petId = this.nextElementSibling.value;
+            let petId = petLink.id;
             console.log("Pet Id:" + petId);
 
             apiActions.getRequest(CONSTANTS.PetAPIURL + petId, data => {
                 CONSTANTS.content.innerHTML = petProfile.PetDetails(data);
-                petProfile.SetupCreatePet();
                 petProfile.SetupMedicalPageButton(data);
                 petProfile.SetupUpdateMedicalRecord(data);
             });

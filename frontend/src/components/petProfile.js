@@ -136,8 +136,11 @@ async function CreatePet(newPet) {
     .then(response => response.json())
     console.log(medicalRecord);
     
-    pet.medicalRecord = medicalRecord;
-    CONSTANTS.content.innerHTML = PetDetails(pet);
+    apiActions.getRequest(CONSTANTS.PetAPIURL + petId, data => {
+        CONSTANTS.content.innerHTML = PetDetails(data);
+        SetupMedicalPageButton(data);
+        SetupUpdateMedicalRecord(data);
+    });
 }
 
 // function SetupPetProfileEventListeners(){
