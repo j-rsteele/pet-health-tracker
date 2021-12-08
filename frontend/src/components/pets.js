@@ -1,7 +1,9 @@
 import * as CONSTANTS from "../components/constants";
 import apiActions from "../api/apiActions";
 import petProfile from "../components/petProfile";
+import medicalRecord from "./medicalRecord";
 import header from "../components/header";
+
 
 
 export default {
@@ -78,7 +80,9 @@ function SetupPetLinks() {
 
             apiActions.getRequest(CONSTANTS.PetAPIURL + petId, data => {
                 CONSTANTS.content.innerHTML = petProfile.PetDetails(data);
-                petProfile.SetupCreatePet()
+                petProfile.SetupCreatePet();
+                petProfile.SetupMedicalPageButton(data);
+                petProfile.SetupUpdateMedicalRecord(data);
             });
         });
     })

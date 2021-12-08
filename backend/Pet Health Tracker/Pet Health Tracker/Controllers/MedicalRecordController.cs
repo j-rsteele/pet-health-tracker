@@ -43,15 +43,15 @@ namespace Pet_Health_Tracker.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<IEnumerable<MedicalRecord>> Put(int id, [FromBody] MedicalRecord MedicalRecord)
+        public ActionResult<Pet> Put(int id, [FromBody] MedicalRecord MedicalRecord)
         {
             if (MedicalRecord.Id == id)
             {
                 _db.MedicalRecords.Update(MedicalRecord);
                 _db.SaveChanges();
             }
-
-            return _db.MedicalRecords.ToList();
+            Pet toReturn = _db.Pets.Where(item => item.Id == MedicalRecord.PetId).FirstOrDefault();
+            return toReturn;
         }
 
         [HttpDelete("{id}")]

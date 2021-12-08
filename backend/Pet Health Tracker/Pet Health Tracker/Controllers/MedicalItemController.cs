@@ -34,14 +34,13 @@ namespace Pet_Health_Tracker.Controllers
         }
 
         [HttpPost]
-        public ActionResult<MedicalItem> Post([FromBody] MedicalItem MedicalItem)
+        public ActionResult<IEnumerable<MedicalItem>> Post([FromBody] MedicalItem MedicalItem)
         {
-            MedicalItem.TreatedOn = DateTime.Now;
             
             _db.MedicalItems.Add(MedicalItem);
             _db.SaveChanges();
 
-           return MedicalItem;  // determined by what the front end wants to direct us to
+           return _db.MedicalItems.ToList();  // determined by what the front end wants to direct us to
         }
 
         [HttpPut("{id}")]
