@@ -1,10 +1,12 @@
 import * as CONSTANTS from "./constants";
 import apiActions from "../api/apiActions";
+import medicalItem from "../components/medicalItem"
 
 export default {
     MedicalDetails,
     UpdateMedicalRecord,
-    SetupMedicalRecordSaveButton
+    SetupMedicalRecordSaveButton,
+    setupMedicalItemLinks
 }
 
 //let activeMedicalRecord = pets.activePet;
@@ -24,7 +26,7 @@ function MedicalDetails(data) {
                             <li>${medItem.description}</li>
 
                     </ul>
-                    <input type='hidden' value='${medItem.id}' />
+                    <input type='hidden' value='${medItem.id} class='medItemLinks'' />
                     </li>
                 `
             }).join('')}
@@ -33,16 +35,34 @@ function MedicalDetails(data) {
     `
 }
 
+function setupMedicalItemLinks() {
+    let itemLinks = document.querySelectorAll(".medItemLinks");
+    itemLinks.forEach(itemLink => {
+
+        itemLink.addEventListener("click", function (evt) {
+
+            let medicalItemId = this.nextElementSibling.value;
+            console.log("Medical Item ID: " + medicalItemId);
+
+            api.getRequest(CONSTANTS.MedicalItemsAPIURL + medicalItemId, data => {
+                console.log(data);
+                CONSTANTS.content.innerHTML = medicalItem.DisplayMedicalItem(data);
+
+            });
+        });
+    });
+}
+
 function UpdateMedicalRecord(data) {
     return `
 <input type="hidden" id="medrec_medicalRecordId" value='${data.medicalRecord.Id}'/>
-<input type="text" id="medrec_primaryVet" value='${data.medicalRecord.primaryVet}'/>
-<input type="text" id="medrec_clinic" value='${data.medicalRecord.clinic}'/>
-<input type="text" id="medrec_phone" value='${data.medicalRecord.phone}'/>
-<input type="text" id="medrec_street" value='${data.medicalRecord.street}'/>
-<input type="text" id="medrec_city" value='${data.medicalRecord.city}'/>
-<input type="text" id="medrec_state" value='${data.medicalRecord.state}'/>
-<input type="text" id="medrec_zip" value='${data.medicalRecord.zip}'/>
+<label>Primary Vet: </label><input type="text" id="medrec_primaryVet" value='${data.medicalRecord.primaryVet}'/>
+<label>Clinic: </label><input type="text" id="medrec_clinic" value='${data.medicalRecord.clinic}'/>
+<label>Phone: </label><input type="text" id="medrec_phone" value='${data.medicalRecord.phone}'/>
+<label>Street: </label><input type="text" id="medrec_street" value='${data.medicalRecord.street}'/>
+<label>City: </label><input type="text" id="medrec_city" value='${data.medicalRecord.city}'/>
+<label>State: </label><input type="text" id="medrec_state" value='${data.medicalRecord.state}'/>
+<label>Zip Code: </label><input type="text" id="medrec_zip" value='${data.medicalRecord.zip}'/>
 <button id="btnSaveUpdatePet">Save</button>
 `
 }
@@ -73,7 +93,7 @@ function SetupMedicalRecordSaveButton() {
 
         }
         apiActions.putRequest(CONSTANTS.MedicalRecordAPIURL, medicalRecordId, editMedRecord, data => {
-            console.log(data)
+           
             CONSTANTS.content.innerHTML = MedicalDetails(data);
         });
     });
