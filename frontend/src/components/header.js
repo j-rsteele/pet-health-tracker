@@ -14,7 +14,8 @@ export default {
     SetupNavBar,
     SetupAboutNav,
     SetupOwner,
-    SetupPetNav
+    SetupPetNav,
+    SetupPets
 }
 
 export function SetupNavBar() {
@@ -31,7 +32,9 @@ export function SetupNavBar() {
 function SetupPets() {
     apiActions.getRequest(CONSTANTS.PetAPIURL, data => {
         pets.DisplayAllPets(data);
+        pets.RemovePet();
         pets.SetupPetLinks();
+        pets.SetupAddPetButton();
         petProfile.SetupCreatePet();
         petProfile.SetupMedicalPageButton();
     });

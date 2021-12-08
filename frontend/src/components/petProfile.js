@@ -11,7 +11,8 @@ export default {
     CreatePet,
     EditPet,
     SetupUpdateMedicalRecord,
-    //SetupPetProfileEventListeners
+    SetupCreatePetForm
+
 }
 
 function PetDetails(pet) {
@@ -41,7 +42,21 @@ function PetDetails(pet) {
     </ol>
     <button class="btn btn-primary" id="btnUpdateMedicalRecord">Update</button>
     </div>
+    `
+    // /*<div id="medicalItems">
+    // ${pet.medicalRecord.medicalItems.foreach(item => {
+    //     return `
+    //         ${item.description}
 
+    //     `
+    // })
+
+    // }
+    // </div>
+}
+
+function SetupCreatePetForm() {
+    return `
     <div id="createPet">
     <form>
     <label>Pet Name</label>
