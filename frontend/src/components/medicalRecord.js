@@ -31,7 +31,7 @@ function MedicalDetails(data) {
                             <li>${medItem.description}</li>
 
                     </ul>
-                    <input type='hidden' value='${medItem.id} class='medItemLinks'' />
+                    <input type='hidden' value='${medItem.id}'' class='medItemLinks' id='medId'/>
                     <button id="${medItem.id}"class="btn btn-primary btnEditOneItem">Update</button>
                     </li>
                 `
@@ -40,7 +40,7 @@ function MedicalDetails(data) {
         </ul>
         <button id="createNewMedItem">Add New</button>
     `
-    
+
 }
 
 // function SetupBackButton(){
@@ -113,19 +113,19 @@ function SetupMedicalRecordSaveButton() {
 
         }
         apiActions.putRequest(CONSTANTS.MedicalRecordAPIURL, medicalRecordId, editMedRecord, data => {
-           console.log(data);
+            console.log(data);
         });
         apiActions.getRequest(CONSTANTS.PetAPIURL + petId, data => {
             CONSTANTS.content.innerHTML = petProfile.PetDetails(data);
         });
-    });  
+    });
 }
 
-function SetupCreateNewMedicalItem(){
-    let petId = document.getElementById("medicalDetailPetId").value;
+function SetupCreateNewMedicalItem() {
+    let medId = document.getElementById("medId").value;
     let btnNew = document.getElementById("createNewMedItem");
     btnNew.addEventListener("click", function () {
-            CONSTANTS.content.innerHTML = medicalItem.CreateNewMedicalItem(petId);
-            medicalItem.SaveNewMedicalItemBtn();
+        CONSTANTS.content.innerHTML = medicalItem.CreateNewMedicalItem(medId);
+        medicalItem.SaveNewMedicalItemBtn();
     });
 }

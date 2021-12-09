@@ -36,10 +36,10 @@ function EditMedicalItemDetails(medItem) {
 
 }
 
-function CreateNewMedicalItem(petId) {
+function CreateNewMedicalItem(medId) {
     console.log('edit medical item button');
     return `
-        <input type='hidden' id='newMed_petId' value='${petId}'/>
+        <input type='hidden' id='newMed_medId' value='${medId}'/>
         <select class="custom-select my-1 mr-sm-2" id="newMed_ItemType">
         <option selected>Select Type</option>
         <option>Vaccination</option>
@@ -58,7 +58,7 @@ function CreateNewMedicalItem(petId) {
 
 function SaveNewMedicalItemBtn(){
     let btnSubmitMedItem = document.getElementById("btnSaveNewMedItem");
-    let petId = document.getElementById("newMed_petId").value;
+    let medId = document.getElementById("newMed_medId").value;
     btnSubmitMedItem.addEventListener("click", function(){
         console.log("check add Medical Items");
 
@@ -77,11 +77,11 @@ function SaveNewMedicalItemBtn(){
             ItemType: itemType,
             TreatedOn: treatedOn,
             Description: description,
-            MedicalRecordId: 1
+            MedicalRecordId: medId
         }
         apiActions.postRequest(CONSTANTS.MedicalItemsAPIURL,newMedicalItem, data => {
 
-            CONSTANTS.content.innerHTML = MedicalDetails(data);
+            CONSTANTS.content.innerHTML = medicalRecord.MedicalDetails(data);
 
         });
     });
