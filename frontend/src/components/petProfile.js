@@ -184,6 +184,7 @@ function SetupUpdateMedicalRecord(data) {
             console.log(data);
             CONSTANTS.content.innerHTML = medicalRecord.UpdateMedicalRecord(data);
             medicalRecord.SetupMedicalRecordSaveButton();
+            medicalRecord.SetupBackButton();
         });
 };
 
@@ -196,7 +197,8 @@ function SetupMedicalPageButton(data) {
 
                 CONSTANTS.content.innerHTML = medicalRecord.MedicalDetails(data);
                 //SetupUpdateMedicalRecord();
-                medicalRecord.setupMedicalItemLinks();      
+                medicalRecord.setupMedicalItemLinks();
+                medicalRecord.SetupCreateNewMedicalItem();      
         });
 };
 
