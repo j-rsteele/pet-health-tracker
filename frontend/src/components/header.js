@@ -37,7 +37,6 @@ function SetupPets() {
         pets.SetupAddPetButton();
         petProfile.SetupCreatePet();
         petProfile.SetupMedicalPageButton();
-        weight.SetupWeightTracker();
     });
 }
 

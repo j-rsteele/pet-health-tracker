@@ -27,6 +27,7 @@ function PetDetails(pet) {
     <li>Species: ${pet.species}</li>
     <li>Breed: ${pet.breed}</li>
     <li>Gender: ${pet.gender}</li>
+    <li id="currentPetId">${pet.id}</li>
     </ul>
     <div id="divMedicalInfo"></div>
     <div id="divWeightPage"></div>
@@ -202,7 +203,9 @@ function SetupMedicalPageButton(data) {
 function SetupWeightTrackerLink(){
     let weightTrackerLink = document.getElementById("weightTrackerBtn");
     console.log("setting up weight tracker link");
+    let petId = document.getElementById('currentPetId');
     weightTrackerLink.addEventListener("click", function(){
-        CONSTANTS.content.innerHTML = weight.SetupWeightForm();
+        CONSTANTS.content.innerHTML = weight.SetupWeightForm(petId);
+        weight.SetupCreateWeight();
     })
 }

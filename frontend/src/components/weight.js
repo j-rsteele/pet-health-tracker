@@ -1,42 +1,50 @@
 import * as CONSTANTS from "./constants.js";
 import pets from "../components/pets";
+import apiActions from "../api/apiActions.js";
+import petProfile from "./petProfile.js";
  
 export default {
    SetupWeightForm,
-   SetupWeightTracker
+   SetupWeightTracker,
+   SetupCreateWeight
 }
  
  
-function SetupWeightTracker(pet){
+function SetupWeightTracker(){
 
    CONSTANTS.content.innerHTML = SetupWeightForm();
-   SetupWeightSubmitBtn(pet);
- 
+   SetupWeightSubmitBtn();
 }
  
-function SetupWeightSubmitBtn(pet){
+function SetupWeightSubmitBtn(){
    const btnSubmitWeight = document.getElementById("btnSubmitWeight");
    btnSubmitWeight.addEventListener('click', function(){
-
+      let petId = document.getElementById("WeightPetId").ToInt32();
+   
+   
+   
    })
    SetupCreateWeight();
    };
 
  
-function SetupWeightForm(){
+function SetupWeightForm(petId){
 document.getElementById("title").innerText = "Enter Weight";
+console.log(petId);
 return`
 <div id="WeightForm">
 <form>
    <label>Pet Weight</label>
+   <input type="hidden" id="petId">
    <input id="petWeight"><br><br>
    <label>Date</label>
    <input type="date" id="weightDate"><br><br>
-   
-   <input type="button" id="btnSubmitWeight" value="submit">
+   <input type="hidden" id="weightPetId" value=${petId.innerText}>
+   <input type="button" id="btnSubmitWeight" class="btn btn-primary" value="submit">
+   <input type="button" id="btnListWeights" class="btn btn-primary" value="List Weights">
 </form>
 </div>
-`
+`;
 }
  
 function SetupCreateWeight() {
@@ -47,22 +55,29 @@ function SetupCreateWeight() {
          Id: 0,
          CurrentWeight: document.getElementById("petWeight").value,
          Date: document.getElementById("weightDate").value,
-         PetId: pet.petId,
+         PetId: document.getElementById('weightPetId').value
        }
-       CreateWeight(newWeight);
+       //CreateWeight(newWeight);
+       apiActions.postRequest(CONSTANTS.WeightAPIURL, newWeight, data => {
+          console.log(data);
+            CONSTANTS.content.innerHTML = petProfile.PetDetails(data.pet);
+            petProfile.SetupMedicalPageButton(data);
+                petProfile.SetupUpdateMedicalRecord(data);
+                petProfile.SetupWeightTrackerLink();
+       });
    });
 }
  
-async function CreateWeight(newWeight) {
-   let weight = await fetch(CONSTANTS.WeightAPIURL, {
-       method: "POST",
-       headers: {
-           "Content-Type": "application/json"
-       },
-       body: JSON.stringify(newWeight)
-   })
-   .then(response => response.json())
-   console.log(weight)
-}
+// function CreateWeight(newWeight) {
+//    let weight = fetch(CONSTANTS.WeightAPIURL, {
+//        method: "POST",
+//        headers: {
+//            "Content-Type": "application/json"
+//        },
+//        body: JSON.stringify(newWeight)
+//    })
+//    .then(response => response.json())
+//    console.log(weight)
+// }
  
    
