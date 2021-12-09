@@ -69,8 +69,8 @@ function SetupCreatePetForm() {
         <label>Pet Breed</label>
         <input type="text" id="PetBreed"><br><br>
         <label>Pet Gender</label>
-        <input type="text" id="PetGender">
-        <input type="button" id="btnSubmitPet" value="submit">
+        <input type="text" id="PetGender"><br><br>
+        <input type="button" class="btn btn-primary" id="btnSubmitPet" value="submit">
     </form>
     </div>
     `

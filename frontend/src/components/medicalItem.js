@@ -11,11 +11,13 @@ function EditMedicalItemDetails(medItem){
     console.log('edit medical item button');
     let time = medItem.treatedOn.split(".")[0];
     return `
-        Medical Item <input type="text" value="${medItem.itemType}" id="ItemType" />
-        Medical Item <select id="listMedItems"></select>
-        Date Treated On <input type="datetime-local" value="${time}" id="TreatedOn" />
-        Description <input type="text" value="${medItem.description}" id="Description" />
-        <button id="btnSaveUpdatePet">Save</button>
+    <div id="editMedicalItem">
+        Medical Item <input type="text" value="${medItem.itemType}" id="ItemType" /><br><br>
+        Medical Item <select id="listMedItems"></select><br><br>
+        Date Treated On <input type="datetime-local" value="${time}" id="TreatedOn" /><br><br>
+        Description <input type="text" value="${medItem.description}" id="Description" /><br><br>
+        <button id="btnSaveUpdatePet" class="btn btn-primary">Save</button>
+        </div>
     `
     // const listMedicalItems = document.getElementById("listMedItems");
 
@@ -58,7 +60,7 @@ function EditMedicalItem(pet) {
         <input type="text" value="${pet.ItemType}" id="ItemType" />
         <input type="text" value="${pet.TreatedOn}" id="TreatedOn" />
         <input type="text" value="${pet.Description}" id="Description" />
-        <button id="btnSaveUpdateItem">Save</button>
+        <button id="btnSaveUpdateItem" class="btn btn-primary">Save</button>
     `;
 
 }

@@ -37,6 +37,22 @@ header {
     margin: 0 auto;
 }
 
+#createPet {
+    margin-top: 2em;
+}
+
+#editMedicalItem,
+#editOwner {
+    margin-top: 2em;
+}
+
+
+#ownerInformation {
+    margin: 2em;
+    font-size: 1.25em;
+
+}
+
 footer {
     background-color: black;
     color: azure;
