@@ -2,7 +2,8 @@ import * as CONSTANTS from "./constants";
 import apiActions from "../api/apiActions";
 import medicalRecord from "./medicalRecord";
 import petProfile from "../components/petProfile";
-import pets from "../components/pets"
+import pets from "../components/pets";
+import weight from "../components/weight";
 
 export default {
     PetDetails,
@@ -11,8 +12,8 @@ export default {
     CreatePet,
     EditPet,
     SetupUpdateMedicalRecord,
-    SetupCreatePetForm
-
+    SetupCreatePetForm,
+    SetupWeightTrackerLink
 }
 
 function PetDetails(pet) {
@@ -26,12 +27,12 @@ function PetDetails(pet) {
     <li>Species: ${pet.species}</li>
     <li>Breed: ${pet.breed}</li>
     <li>Gender: ${pet.gender}</li>
+    <li id="currentPetId">${pet.id}</li>
     </ul>
     <div id="divMedicalInfo"></div>
     <div id="divWeightPage"></div>
     <button class="btn btn-primary" id="btnMedicalPage">Medical Record</button>
-    <button class="btn btn-primary btnWeightPage">Weight Tracker</button>
-    <button class="btn btn-primary btnAppointmentsPage">Appointments</button>
+    <button class="btn btn-primary btnWeightPage" id = "weightTrackerBtn">Weight Tracker</button>
     </div>
     <div id="medicalRecord">
     <ol>
@@ -198,3 +199,13 @@ function SetupMedicalPageButton(data) {
                 medicalRecord.setupMedicalItemLinks();      
         });
 };
+
+function SetupWeightTrackerLink(){
+    let weightTrackerLink = document.getElementById("weightTrackerBtn");
+    console.log("setting up weight tracker link");
+    let petId = document.getElementById('currentPetId');
+    weightTrackerLink.addEventListener("click", function(){
+        CONSTANTS.content.innerHTML = weight.SetupWeightForm(petId);
+        weight.SetupCreateWeight();
+    })
+}
