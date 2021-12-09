@@ -37,7 +37,7 @@ function DisplayAllPets(pets) {
                 `
             }).join('')}
         </ul>
-        <button id="btnAddPet">Add Pet</button>
+        <button class="btn btn-primary" id="btnAddPet">Add Pet</button>
     `;
 }
 

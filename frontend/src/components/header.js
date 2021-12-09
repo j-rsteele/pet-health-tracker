@@ -21,7 +21,7 @@ export default {
 export function SetupNavBar() {
     SetupPets();
     return `
-    <ul>
+    <ul id="navbar">
         <li id="navPets">Pets</li>
         <li id="navOwner">Owner</li>
         <li id="navAbout">About</li>
