@@ -1,3 +1,54 @@
 ul,li{
     list-style: none;
+    margin-right: 2em;
 }
+
+html {
+    text-align: center;
+}
+
+
+
+#navbar {
+    display: flex;
+    font-size: 1.25em;
+    color:  rgb(157, 150, 247);
+    margin: 0 auto .5em auto;
+    cursor: pointer;
+}
+
+header {
+    background-color:rgb(11, 11, 71);
+    color: white;
+    padding: 1em;
+    text-align: center;
+}
+
+.card {
+    background-color: azure;
+    margin: 2em auto;
+    border: 1px solid black;
+    box-shadow: 1px 1px grey;
+    padding: 1em;
+    text-align: center;
+}
+
+.btnAddPet {
+    margin: 0 auto;
+}
+
+footer {
+    background-color: black;
+    color: azure;
+    font-size: 1em;
+    padding: .5em;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.footerText {
+    display: flex;
+}
+
