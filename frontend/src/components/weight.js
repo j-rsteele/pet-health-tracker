@@ -2,81 +2,67 @@ import * as CONSTANTS from "./constants.js";
 import pets from "../components/pets";
  
 export default {
-   setupWeightForm,
-   setupWeightTracker
+   SetupWeightForm,
+   SetupWeightTracker
 }
  
  
-function setupWeightTracker(){
-   CONSTANTS.content.innerHTML = setupWeightForm();
-   setupWeightSubmitBtn();
+function SetupWeightTracker(pet){
+
+   CONSTANTS.content.innerHTML = SetupWeightForm();
+   SetupWeightSubmitBtn(pet);
  
 }
  
-function setupWeightSubmitBtn(pet){
-   const btnSubmitWt = document.getElementById("btnSubmitWt");
-   btnSubmitWt.addEventListener('click', function(){
-      const newPetWt = {
-      Id: 0,
-      CurrentWeight: document.getElementById("petWt").value,
-      Date: document.getElementById("wtDate").value,
-      PetId: document.getElementById("pet.petId").value,
-   }
-   });
-}
+function SetupWeightSubmitBtn(pet){
+   const btnSubmitWeight = document.getElementById("btnSubmitWeight");
+   btnSubmitWeight.addEventListener('click', function(){
+
+   })
+   SetupCreateWeight();
+   };
+
  
-function setupWeightForm(){
-   
+function SetupWeightForm(){
+document.getElementById("title").innerText = "Enter Weight";
 return`
-<div id="WtForm">
+<div id="WeightForm">
 <form>
    <label>Pet Weight</label>
-   <input id="petWt"><br><br>
+   <input id="petWeight"><br><br>
    <label>Date</label>
-   <input type="date" id="wtDate"><br><br>
+   <input type="date" id="weightDate"><br><br>
    
-   <input type="button" id="btnSubmitWt" value="submit">
+   <input type="button" id="btnSubmitWeight" value="submit">
 </form>
 </div>
 `
 }
  
-function SetupCreateWt() {
-   const btnSubmitPet = document.getElementById("btnSubmitWt");
-   btnSubmitWt.addEventListener("click", function(){
+function SetupCreateWeight() {
+   const btnSubmitWeight = document.getElementById("btnSubmitWeight");
+   btnSubmitWeight.addEventListener("click", function(){
        console.log("check add weight button");
        let newWeight = {
          Id: 0,
-         CurrentWeight: document.getElementById("petWt").value,
-         Date: document.getElementById("wtDate").value,
-         PetId: document.getElementById("pet.petId").value,
+         CurrentWeight: document.getElementById("petWeight").value,
+         Date: document.getElementById("weightDate").value,
+         PetId: pet.petId,
        }
        CreateWeight(newWeight);
    });
 }
  
-// async function CreateWeight(newWeight) {
-//    let weight = await fetch(CONSTANTS.WeightAPIURL, {
-//        method: "POST",
-//        headers: {
-//            "Content-Type": "application/json"
-//        },
-//        body: JSON.stringify(newWeight)
-//    })
-//    .then(response => response.json())
-   
-//    let petId = pet.id;
- 
-//        let petWeight = document.getElementById("petWt").value;
-//        let weightDate = document.getElementById("wtDate").value;
-//        let petId = document.getElementById("pet.petId").value;
-     
-//        let newWeight = {
-//        Id: 0,
-//        CurrentWeight: petWeight,
-//        Date: weightDate,
-//        PetId: petId
-//        }
-// }
+async function CreateWeight(newWeight) {
+   let weight = await fetch(CONSTANTS.WeightAPIURL, {
+       method: "POST",
+       headers: {
+           "Content-Type": "application/json"
+       },
+       body: JSON.stringify(newWeight)
+   })
+   .then(response => response.json())
+   console.log(weight)
+}
  
    

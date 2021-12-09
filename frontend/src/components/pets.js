@@ -3,8 +3,7 @@ import apiActions from "../api/apiActions";
 import petProfile from "../components/petProfile";
 import medicalRecord from "./medicalRecord";
 import header from "../components/header";
-
-
+import weight from "./weight";
 
 export default {
     DisplayAllPets,
@@ -82,6 +81,7 @@ function SetupPetLinks() {
                 CONSTANTS.content.innerHTML = petProfile.PetDetails(data);
                 petProfile.SetupMedicalPageButton(data);
                 petProfile.SetupUpdateMedicalRecord(data);
+                petProfile.SetupWeightTrackerLink();
             });
         });
     })

@@ -2,7 +2,8 @@ import * as CONSTANTS from "./constants";
 import apiActions from "../api/apiActions";
 import medicalRecord from "./medicalRecord";
 import petProfile from "../components/petProfile";
-import pets from "../components/pets"
+import pets from "../components/pets";
+import weight from "../components/weight";
 
 export default {
     PetDetails,
@@ -203,6 +204,5 @@ function SetupWeightTrackerLink(){
     console.log("setting up weight tracker link");
     weightTrackerLink.addEventListener("click", function(){
         CONSTANTS.content.innerHTML = weight.SetupWeightForm();
-        weightTrackerBtn
     })
 }
