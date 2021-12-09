@@ -14,7 +14,7 @@ export default {
 // export function SetupAddOwner(){
 //     const btnAddOwner = document.getElementById("btnAddOwner");
 //     btnAddOwner.addEventListener("click", function (){
-//         //console.log('add artist functionality goes here...');
+//         //console.log('');
 //         const newOwner = {
 //             FirstName: document.getElementById("FirstName").value,
 //             LastName: document.getElementById("LastName").value

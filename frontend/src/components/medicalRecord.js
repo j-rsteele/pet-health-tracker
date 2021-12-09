@@ -1,17 +1,24 @@
 import * as CONSTANTS from "./constants";
 import apiActions from "../api/apiActions";
-import medicalItem from "../components/medicalItem"
+import medicalItem from "../components/medicalItem";
+import petProfile from "../components/petProfile";
+import pets from "./pets";
 
 export default {
     MedicalDetails,
     UpdateMedicalRecord,
     SetupMedicalRecordSaveButton,
-    setupMedicalItemLinks
+    setupMedicalItemLinks,
+    SetupCreateNewMedicalItem
+    //SetupBackButton
 }
 
+//button for back functionality
+//<button id='backToPetProfile'>Back to Pet Profile</button>
 function MedicalDetails(data) {
     console.log(data);
     return `
+    <input type='hidden' id='medicalDetailPetId' value='${data.id}'/>
     <ul id="listOfMedicalItems">
 
             ${data.medicalRecord.medicalItems.map(medItem =>{
@@ -31,9 +38,18 @@ function MedicalDetails(data) {
             }).join('')}
             
         </ul>
+        <button id="createNewMedItem">Add New</button>
     `
     
 }
+
+// function SetupBackButton(){
+//     let btnSave = document.getElementById("btnSaveUpdateMedRec");
+//     btnSave.addEventListener("click", function () {
+//         console.log("back to pet profile")
+//         CONSTANTS.content.innerHTML = pets.DisplayAllPets
+//     });
+// }
 
 function setupMedicalItemLinks() {
     let itemLinks = document.querySelectorAll(".btnEditOneItem");
@@ -47,7 +63,8 @@ function setupMedicalItemLinks() {
             apiActions.getRequest(CONSTANTS.MedicalItemsAPIURL + medicalItemId, data => {
                 console.log(data);
                 CONSTANTS.content.innerHTML = medicalItem.EditMedicalItemDetails(data);
-
+                medicalItem.SaveMedicalUpdatesBtn();
+                //SetupBackButton();
             });
         });
     });
@@ -99,7 +116,16 @@ function SetupMedicalRecordSaveButton() {
            console.log(data);
         });
         apiActions.getRequest(CONSTANTS.PetAPIURL + petId, data => {
-            CONSTANTS.content.innerHTML = MedicalDetails(data);
+            CONSTANTS.content.innerHTML = petProfile.PetDetails(data);
         });
+    });  
+}
+
+function SetupCreateNewMedicalItem(){
+    let petId = document.getElementById("medicalDetailPetId").value;
+    let btnNew = document.getElementById("createNewMedItem");
+    btnNew.addEventListener("click", function () {
+            CONSTANTS.content.innerHTML = medicalItem.CreateNewMedicalItem(petId);
+            medicalItem.SaveNewMedicalItemBtn();
     });
 }

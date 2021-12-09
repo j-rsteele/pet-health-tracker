@@ -34,25 +34,26 @@ namespace Pet_Health_Tracker.Controllers
         }
 
         [HttpPost]
-        public ActionResult<IEnumerable<MedicalItem>> Post([FromBody] MedicalItem MedicalItem)
+        public ActionResult<Pet> Post([FromBody] MedicalItem MedicalItem)
         {
             
             _db.MedicalItems.Add(MedicalItem);
             _db.SaveChanges();
 
-           return _db.MedicalItems.ToList();  // determined by what the front end wants to direct us to
+            var medRecord = _db.MedicalRecords.Find(MedicalItem.MedicalRecordId);
+            return _db.Pets.Find(medRecord.Id);  // determined by what the front end wants to direct us to
         }
 
         [HttpPut("{id}")]
-        public ActionResult<IEnumerable<MedicalItem>> Put(int id, [FromBody] MedicalItem MedicalItem)
+        public ActionResult<Pet> Put(int id, [FromBody] MedicalItem MedicalItem)
         {
             if (MedicalItem.Id == id)
             {
                 _db.MedicalItems.Update(MedicalItem);
                 _db.SaveChanges();
             }
-
-            return _db.MedicalItems.ToList();
+            var medRecord = _db.MedicalRecords.Find(MedicalItem.MedicalRecordId);
+            return _db.Pets.Find(medRecord.Id);
         }
 
         [HttpDelete("{id}")]
