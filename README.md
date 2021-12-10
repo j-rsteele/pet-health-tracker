@@ -22,3 +22,6 @@ Future features that we would include are:
 4) Add ability to add appointments to your calendar with push notification reminders.
 5) Add ability to search for local dog parks.
 6) Add ability to add task to do list i.e. giving your pet meds at certain times or applying flea/tick medications monthly.
+7) Add ability to create monthly summaries of data entered.
+8) Add a diet tracking feature to help find ingredient lists for dog foods for dogs with allergies using barcode api system if and when that information becomes available to the public.
+9) Add ability to keep track of how your dog responds to each food for those dogs with allergies.
