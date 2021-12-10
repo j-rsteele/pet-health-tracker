@@ -21,10 +21,14 @@ function DisplayAllPets(pets) {
         <ul id="petCards">
 
             ${pets.map(pet => {
+                if(!pet.photo){
+                    let random = Math.floor(Math.random()*210);
+                    pet.photo = `https://placedog.net/640/480?id=${random}`
+                }
                 return `
                     <li>
                     <div class="card" style="width: 18rem;">
-                    <img src="" class="card-img-top" alt="pet profile">
+                    <img src="${pet.photo}" class="card-img-top" alt="pet profile">
                     <div class="card-body">
                     <h5 class="card-title">${pet.name}</h5>
                     <a href="#" class="btn btn-primary petBtn" id="${pet.id}">View Pet</a>
@@ -35,8 +39,14 @@ function DisplayAllPets(pets) {
                     </li>
                 `
             }).join('')}
-        </ul>
-        <button class="btn btn-primary" id="btnAddPet">Add Pet</button>
+            
+            <div class="card" style="width: 9rem;">
+                    <div class="card-body">
+                    <button class="btn btn-primary" id="btnAddPet">Add Pet</button>
+                    </div>
+                    </div>
+            </ul>
+        
     `;
 }
 

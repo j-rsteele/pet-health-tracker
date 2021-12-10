@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 ul,li{
     list-style: none;
     margin-right: 2em;
@@ -24,6 +28,10 @@ header {
     text-align: center;
 }
 
+#petCards{
+    display:flex;
+}
+
 .card {
     background-color: azure;
     margin: 2em auto;
@@ -31,6 +39,7 @@ header {
     box-shadow: 1px 1px grey;
     padding: 1em;
     text-align: center;
+
 }
 
 .btnAddPet {
@@ -60,6 +69,8 @@ footer {
     padding: .5em;
     position: absolute;
     bottom: 0;
+    left: 0;
+    right: 0;
     width: 100%;
     text-align: center;
 }
