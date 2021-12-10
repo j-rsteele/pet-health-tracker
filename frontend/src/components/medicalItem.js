@@ -13,6 +13,11 @@ function EditMedicalItemDetails(medItem) {
     console.log('edit medical item button');
     let time = medItem.treatedOn.split(".")[0];
     return `
+
+ 
+       
+      
+   <div id="editMedicalItem">
         <input type='hidden' id='med_MedicalItemId' value='${medItem.id}'/>
         <input type='hidden' id='med_MedicalRecordId' value='${medItem.medicalRecordId}'/>
         <select class="custom-select my-1 mr-sm-2" id="med_ItemType">
@@ -28,6 +33,7 @@ function EditMedicalItemDetails(medItem) {
         Date Treated On <input type="datetime-local" value="${time}" id="med_TreatedOn" />
         Description <input type="text" value="${medItem.description}" id="med_Description" />
         <button id="btnSaveUpdateMedItem">Save</button>
+          </div>
     `
     //Medical Item <input type="text" value="${medItem.itemType}" id="ItemType" />
 
@@ -87,6 +93,16 @@ function SaveNewMedicalItemBtn(){
     });
 }
 
+
+function EditMedicalItem(pet) {
+    console.log('edit medical item button');
+    return `
+        <input type="text" value="${pet.ItemType}" id="ItemType" />
+        <input type="text" value="${pet.TreatedOn}" id="TreatedOn" />
+        <input type="text" value="${pet.Description}" id="Description" />
+        <button id="btnSaveUpdateItem" class="btn btn-primary">Save</button>
+    `;
+}
 
 function SaveMedicalUpdatesBtn() {
     let btnSave = document.getElementById("btnSaveUpdateMedItem");

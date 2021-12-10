@@ -15,7 +15,7 @@ SetupAbout
             </button>
           </div>
           <div class="modal-body">
-            <p>The Pet Tracker App stores your pet's critical medical information for quick access from your device.  You can update and store a record of all your appointments, vaccinations, and procedures by pet, and then even search for a dog park in your area.</p>
+            <p>The Pet Tracker App stores your pet's critical medical information for quick access from your device.  You can update and store a record of all your  vaccinations, and procedures by pet.</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

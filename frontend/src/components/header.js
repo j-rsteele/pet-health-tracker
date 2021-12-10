@@ -37,6 +37,7 @@ function SetupPets() {
         pets.SetupAddPetButton();
         petProfile.SetupCreatePet();
         petProfile.SetupMedicalPageButton();
+        SetupAboutNav();
     });
 }
 
@@ -47,7 +48,7 @@ export function SetupOwner() {
          apiActions.getRequest(CONSTANTS.OwnerAPIURL+"1", data => {
         console.log("owner button clicked");
         CONSTANTS.content.innerHTML = owner.DisplayOwner(data);
-        CONSTANTS.title.innerText = "";
+        CONSTANTS.title.innerText = "Owner Information";
         owner.SetupEditOwnerButton(data);
     })
 
@@ -63,8 +64,9 @@ export function SetupOwner() {
      function SetupAboutNav(){
         const aboutLink = document.getElementById('navAbout');
         aboutLink.addEventListener("click", function(){
-            about.SetupAbout();
-            
+            console.log('about clicked');
+            CONSTANTS.title.innerText = "About";
+            CONSTANTS.content.innerHTML = about.SetupAbout();
         })
     }
 

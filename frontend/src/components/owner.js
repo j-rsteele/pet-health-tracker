@@ -4,35 +4,12 @@ import * as CONSTANTS from "./constants";
 export default {
     DisplayOwner,
     SetupEditOwnerButton,
-    //SetupAddOwner,
     EditOwner
 }
 
-
-
-// create owner
-// export function SetupAddOwner(){
-//     const btnAddOwner = document.getElementById("btnAddOwner");
-//     btnAddOwner.addEventListener("click", function (){
-//         //console.log('');
-//         const newOwner = {
-//             FirstName: document.getElementById("FirstName").value,
-//             LastName: document.getElementById("LastName").value
-//         }
-
-//         apiActions.postRequest(CONSTANTS.OwnerAPIURL, newOwner, data => {
-//             CONSTANTS.content.innerHTML = Owner.DisplayOwner(data);
-//             Owner.SetupEditButton();
-//         });
-//     });
-// }
-
-
-// view owner
-
 function DisplayOwner(owner) {
+
     return `
-   <h4>Owner Information</h4>
    <ul id="ownerInformation">
   <input type="hidden" value="${owner.id}" id="ownerid" />
    <li>First Name: ${owner.firstName}</li>
@@ -46,11 +23,12 @@ function DisplayOwner(owner) {
 function EditOwner(owner) {
     console.log(owner);
     return `
-    <h4>Owner Information</h4>
+    <div id="editOwner">
         <input type="hidden" value="${owner.id}" id="owner_id" />
         <input type="text" value="${owner.firstName}" id="owner_first" />
         <input type="text" value="${owner.lastName}" id="owner_last" />
         <button id="btnSaveOwner">Update</button>
+        </div>
     `;
 }
 
@@ -76,7 +54,6 @@ function SetupSaveOwnerButton() {
         apiActions.putRequest(CONSTANTS.OwnerAPIURL, OwnerId, editOwner, data => {
             console.log(data)
             CONSTANTS.content.innerHTML = DisplayOwner(data);
-            //SetupEditOwnerButton();
         });
     });
 }
