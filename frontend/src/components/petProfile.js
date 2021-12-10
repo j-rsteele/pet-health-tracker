@@ -3,7 +3,7 @@ import apiActions from "../api/apiActions";
 import medicalRecord from "./medicalRecord";
 import petProfile from "../components/petProfile";
 import pets from "../components/pets";
-import weight from "../components/weight";
+
 
 export default {
     PetDetails,
@@ -13,8 +13,12 @@ export default {
     EditPet,
     SetupUpdateMedicalRecord,
     SetupCreatePetForm,
-    SetupWeightTrackerLink
+    //SetupWeightTrackerLink
 }
+
+{/* 
+To be added to PetDetails when weight tracking is implemented
+<button class="btn btn-primary btnWeightPage" id = "weightTrackerBtn">Weight Tracker</button> */}
 
 function PetDetails(pet) {
     
@@ -31,7 +35,7 @@ function PetDetails(pet) {
     <div id="divMedicalInfo"></div>
     <div id="divWeightPage"></div>
     <button class="btn btn-primary" id="btnMedicalPage">Medical Record</button>
-    <button class="btn btn-primary btnWeightPage" id = "weightTrackerBtn">Weight Tracker</button>
+    
     </div>
     <div id="medicalRecord">
     <h2>Provider Information</h2>
@@ -44,16 +48,6 @@ function PetDetails(pet) {
     <button class="btn btn-primary" id="btnUpdateMedicalRecord">Update</button>
     </div>
     `
-    // /*<div id="medicalItems">
-    // ${pet.medicalRecord.medicalItems.foreach(item => {
-    //     return `
-    //         ${item.description}
-
-    //     `
-    // })
-
-    // }
-    // </div>
 }
 
 function SetupCreatePetForm() {
@@ -93,15 +87,6 @@ function SetupCreatePet() {
         CreatePet(newPet);
     });
 }
-
-// async function CreatePetOLD(newPet){
-//         console.log("added new pet");
-//         let pet = await apiActions.postRequest(CONSTANTS.PetAPIURL, newPet, data => {
-//             return data;
-//             //CreateMedicalRecord(newPet);
-//     });
-//     console.log(pet);
-// }
 
 async function CreatePet(newPet) {
     let pet = await fetch(CONSTANTS.PetAPIURL, {
@@ -144,17 +129,6 @@ async function CreatePet(newPet) {
     });
 }
 
-// function SetupPetProfileEventListeners(){
-//     //SetupEditPetButton();
-//     //SetupDeletePetButton();
-//     SetupMedicalPageButton();
-//     SetupUpdateMedicalRecord();
-
-// }
-
-// function SetupDeletePetButton(){
-
-// }
 
 function EditPet(pet) {
     console.log('edit pet button');
@@ -201,12 +175,12 @@ function SetupMedicalPageButton(data) {
         });
 };
 
-function SetupWeightTrackerLink(){
-    let weightTrackerLink = document.getElementById("weightTrackerBtn");
-    console.log("setting up weight tracker link");
-    let petId = document.getElementById('currentPetId');
-    weightTrackerLink.addEventListener("click", function(){
-        CONSTANTS.content.innerHTML = weight.SetupWeightForm(petId);
-        weight.SetupCreateWeight();
-    })
-}
+// function SetupWeightTrackerLink(){
+//     let weightTrackerLink = document.getElementById("weightTrackerBtn");
+//     console.log("setting up weight tracker link");
+//     let petId = document.getElementById('currentPetId');
+//     weightTrackerLink.addEventListener("click", function(){
+//         CONSTANTS.content.innerHTML = weight.SetupWeightForm(petId);
+//         weight.SetupCreateWeight();
+//     })
+// }

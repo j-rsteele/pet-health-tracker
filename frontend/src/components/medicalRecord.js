@@ -38,6 +38,7 @@ function MedicalDetails(data) {
             }).join('')}
             
         </ul>
+        <input type='hidden' value='${data.id}'' class='medItemLinks' id='medRecId'/>
         <button id="createNewMedItem" class="btn btn-primary">Add New</button>
     `
 
@@ -119,12 +120,13 @@ function SetupMedicalRecordSaveButton() {
         });
         apiActions.getRequest(CONSTANTS.PetAPIURL + petId, data => {
             CONSTANTS.content.innerHTML = petProfile.PetDetails(data);
+            petProfile.SetupMedicalPageButton(data);
         });
     });
 }
 
 function SetupCreateNewMedicalItem() {
-    let medId = document.getElementById("medId").value;
+    let medId = document.getElementById("medRecId").value;
     let btnNew = document.getElementById("createNewMedItem");
     btnNew.addEventListener("click", function () {
         CONSTANTS.content.innerHTML = medicalItem.CreateNewMedicalItem(medId);

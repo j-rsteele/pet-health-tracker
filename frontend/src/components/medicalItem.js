@@ -62,10 +62,10 @@ function CreateNewMedicalItem(medId) {
     `
 }
 
-function SaveNewMedicalItemBtn(){
+function SaveNewMedicalItemBtn() {
     let btnSubmitMedItem = document.getElementById("btnSaveNewMedItem");
     let medId = document.getElementById("newMed_medId").value;
-    btnSubmitMedItem.addEventListener("click", function(){
+    btnSubmitMedItem.addEventListener("click", function () {
         console.log("check add Medical Items");
 
         //let medicalRecordId = document.getElementById("newMed_MedicalRecordId").value;
@@ -76,7 +76,7 @@ function SaveNewMedicalItemBtn(){
             return;
         }
         let treatedOn = document.getElementById("newMed_TreatedOn").value;
-        let description = document.getElementById("newMed_Description").value; 
+        let description = document.getElementById("newMed_Description").value;
 
         const newMedicalItem = {
             Id: 0,
@@ -85,9 +85,12 @@ function SaveNewMedicalItemBtn(){
             Description: description,
             MedicalRecordId: medId
         }
-        apiActions.postRequest(CONSTANTS.MedicalItemsAPIURL,newMedicalItem, data => {
+        apiActions.postRequest(CONSTANTS.MedicalItemsAPIURL, newMedicalItem, data => {
 
             CONSTANTS.content.innerHTML = medicalRecord.MedicalDetails(data);
+            medicalRecord.setupMedicalItemLinks(data);
+            medicalRecord.SetupCreateNewMedicalItem(data);
+
 
         });
     });
@@ -133,7 +136,9 @@ function SaveMedicalUpdatesBtn() {
             console.log("click save updated button");
 
             CONSTANTS.content.innerHTML = medicalRecord.MedicalDetails(data);
-            medicalRecord.setupMedicalItemLinks();
+            medicalRecord.setupMedicalItemLinks(data);
+            medicalRecord.SetupCreateNewMedicalItem(data);
+
 
 
         });
