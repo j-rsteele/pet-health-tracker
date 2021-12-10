@@ -21,7 +21,6 @@ function PetDetails(pet) {
     return `
     <div id="details">
     <ul>
-    <li>${pet.photo}</li>
     <li>Name: ${pet.name}</li>
     <li>Age: ${pet.age}</li>
     <li>Species: ${pet.species}</li>

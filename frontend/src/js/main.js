@@ -12,4 +12,5 @@ function setupHomeNav() {
     navbar.innerHTML = Header.SetupNavBar();
     Header.SetupOwner();
     Header.SetupPetNav();
+    Header.SetupAboutNav();
 }
