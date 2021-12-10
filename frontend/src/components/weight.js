@@ -40,7 +40,7 @@ return`
    <label>Date</label>
    <input type="date" id="weightDate"><br><br>
    <input type="hidden" id="weightPetId" value=${petId.innerText}>
-   <input type="button" id="btnSubmitWeight" class="btn btn-primary" value="submit">
+   <input type="button" id="btnSubmitWeight" class="btn btn-primary" value="Submit">
    <input type="button" id="btnListWeights" class="btn btn-primary" value="List Weights">
 </form>
 </div>

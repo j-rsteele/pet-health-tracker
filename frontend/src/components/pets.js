@@ -4,6 +4,7 @@ import petProfile from "../components/petProfile";
 import medicalRecord from "./medicalRecord";
 import header from "../components/header";
 import weight from "./weight";
+import about from "./about";
 
 export default {
     DisplayAllPets,
@@ -39,12 +40,13 @@ function DisplayAllPets(pets) {
                     </li>
                 `
             }).join('')}
-            
+            <li>
             <div class="card" style="width: 9rem;">
                     <div class="card-body">
                     <button class="btn btn-primary" id="btnAddPet">Add Pet</button>
                     </div>
                     </div>
+                    </li>
             </ul>
         
     `;
@@ -92,6 +94,7 @@ function SetupPetLinks() {
                 petProfile.SetupMedicalPageButton(data);
                 petProfile.SetupUpdateMedicalRecord(data);
                 petProfile.SetupWeightTrackerLink();
+                about.SetupAbout();
             });
         });
     })

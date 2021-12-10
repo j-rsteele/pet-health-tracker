@@ -50,9 +50,9 @@ export function SetupOwner() {
         CONSTANTS.content.innerHTML = owner.DisplayOwner(data);
         CONSTANTS.title.innerText = "Owner Information";
         owner.SetupEditOwnerButton(data);
+    });
     })
-
-    })}
+}
 
      function SetupPetNav(){
         const petLink = document.getElementById('navPets');
@@ -64,10 +64,8 @@ export function SetupOwner() {
      function SetupAboutNav(){
         const aboutLink = document.getElementById('navAbout');
         aboutLink.addEventListener("click", function(){
-            console.log('about clicked');
-            CONSTANTS.title.innerText = "About";
+           console.log('about clicked');
             CONSTANTS.content.innerHTML = about.SetupAbout();
-        })
+            CONSTANTS.title.innerText = "About";
+        });
     }
-
-  

@@ -38,7 +38,7 @@ function MedicalDetails(data) {
             }).join('')}
             
         </ul>
-        <button id="createNewMedItem">Add New</button>
+        <button id="createNewMedItem" class="btn btn-primary">Add New</button>
     `
 
 }
@@ -72,16 +72,18 @@ function setupMedicalItemLinks() {
 
 function UpdateMedicalRecord(data) {
     return `
-<input type="hidden" id="medrec_medicalRecordId" value='${data.medicalRecord.id}'/>
-<input type="hidden" id="medrec_petId" value='${data.medicalRecord.petId}'/>
-<label>Primary Vet: </label><input type="text" id="medrec_primaryVet" value='${data.medicalRecord.primaryVet}'/>
-<label>Clinic: </label><input type="text" id="medrec_clinic" value='${data.medicalRecord.clinic}'/>
-<label>Phone: </label><input type="text" id="medrec_phone" value='${data.medicalRecord.phone}'/>
-<label>Street: </label><input type="text" id="medrec_street" value='${data.medicalRecord.street}'/>
-<label>City: </label><input type="text" id="medrec_city" value='${data.medicalRecord.city}'/>
-<label>State: </label><input type="text" id="medrec_state" value='${data.medicalRecord.state}'/>
-<label>Zip Code: </label><input type="text" id="medrec_zip" value='${data.medicalRecord.zip}'/>
-<button id="btnSaveUpdateMedRec">Save</button>
+    <div id="updateMedicalRecord">
+<input type="hidden" id="medrec_medicalRecordId" value='${data.medicalRecord.id}'/><br><br>
+<input type="hidden" id="medrec_petId" value='${data.medicalRecord.petId}'/><br><br>
+<label>Primary Vet: </label><input type="text" id="medrec_primaryVet" value='${data.medicalRecord.primaryVet}'/><br><br>
+<label>Clinic: </label><input type="text" id="medrec_clinic" value='${data.medicalRecord.clinic}'/><br><br>
+<label>Phone: </label><input type="text" id="medrec_phone" value='${data.medicalRecord.phone}'/><br><br>
+<label>Street: </label><input type="text" id="medrec_street" value='${data.medicalRecord.street}'/><br><br>
+<label>City: </label><input type="text" id="medrec_city" value='${data.medicalRecord.city}'/><br><br>
+<label>State: </label><input type="text" id="medrec_state" value='${data.medicalRecord.state}'/><br><br>
+<label>Zip Code: </label><input type="text" id="medrec_zip" value='${data.medicalRecord.zip}'/><br><br>
+<button id="btnSaveUpdateMedRec" class="btn btn-primary">Save</button>
+</div>
 `
 }
 

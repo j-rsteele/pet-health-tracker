@@ -8,7 +8,6 @@ export default {
 }
 
 function DisplayOwner(owner) {
-
     return `
    <ul id="ownerInformation">
   <input type="hidden" value="${owner.id}" id="ownerid" />

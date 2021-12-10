@@ -11,7 +11,17 @@ html {
     text-align: center;
 }
 
+#listOfMedicalItems {
+    margin: 2em;
+}
 
+#updateMedicalRecord {
+    margin-top: 1em;
+}
+
+input {
+    margin-left: .5em;
+}
 
 #navbar {
     display: flex;
@@ -39,7 +49,6 @@ header {
     box-shadow: 1px 1px grey;
     padding: 1em;
     text-align: center;
-
 }
 
 .btnAddPet {
@@ -59,7 +68,6 @@ header {
 #ownerInformation {
     margin: 2em;
     font-size: 1.25em;
-
 }
 
 footer {

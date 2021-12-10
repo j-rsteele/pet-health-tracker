@@ -35,6 +35,7 @@ function PetDetails(pet) {
     <button class="btn btn-primary btnWeightPage" id = "weightTrackerBtn">Weight Tracker</button>
     </div>
     <div id="medicalRecord">
+    <h2>Provider Information</h2>
     <ol>
     <li>Primary Vet: ${pet.medicalRecord.primaryVet}</li>
     <li>Clinic: ${pet.medicalRecord.clinic}</li>
@@ -184,7 +185,6 @@ function SetupUpdateMedicalRecord(data) {
             console.log(data);
             CONSTANTS.content.innerHTML = medicalRecord.UpdateMedicalRecord(data);
             medicalRecord.SetupMedicalRecordSaveButton();
-            medicalRecord.SetupBackButton();
         });
 };
 

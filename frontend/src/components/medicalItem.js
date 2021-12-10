@@ -30,7 +30,7 @@ function EditMedicalItemDetails(medItem) {
         <option value="${medItem.medication}">Medication</option>
         </select>
 
-        Date Treated On <input type="datetime-local" value="${time}" id="med_TreatedOn" />
+        Date Treated On <input type="date" value="${time}" id="med_TreatedOn" />
         Description <input type="text" value="${medItem.description}" id="med_Description" />
         <button id="btnSaveUpdateMedItem">Save</button>
           </div>
@@ -56,7 +56,7 @@ function CreateNewMedicalItem(medId) {
         <option>Medication</option>
         </select>
 
-        Date Treated On <input type="datetime-local" id="newMed_TreatedOn" />
+        Date Treated On <input type="date" id="newMed_TreatedOn" />
         Description <input type="text"  id="newMed_Description" />
         <button id="btnSaveNewMedItem">Save</button>
     `
