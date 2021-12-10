@@ -18,3 +18,4 @@ Get a list of each medical treat on each pet’s account
 Future features that we would include are:
 a method to list the weights for each pet.  We are waiting for this function to be added to include the function which is ready that adds the weights.
 User login feature so that this application can be an online application to be used simultaneously by more than one user.  Currently, each user will be using their own version locally on their computer.
+Ability to add a photo for each pet.  Currently, we have images of random dogs populating the image field as a placeholder.  
