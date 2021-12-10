@@ -16,25 +16,28 @@ export default {
     //SetupWeightTrackerLink
 }
 
-{/* 
-To be added to PetDetails when weight tracking is implemented
-<button class="btn btn-primary btnWeightPage" id = "weightTrackerBtn">Weight Tracker</button> */}
+{
+    /* 
+    To be added to PetDetails when weight tracking is implemented
+    <button class="btn btn-primary btnWeightPage" id = "weightTrackerBtn">Weight Tracker</button> */
+}
 
 function PetDetails(pet) {
-    
+
     return `
     <div id="details">
-    <ul>
+    <h2>Pet Profile</h2>
+    <ol>
     <li>Name: ${pet.name}</li>
     <li>Age: ${pet.age}</li>
     <li>Species: ${pet.species}</li>
     <li>Breed: ${pet.breed}</li>
     <li>Gender: ${pet.gender}</li>
     <li id="currentPetId">${pet.id}</li>
-    </ul>
+    </ol>
     <div id="divMedicalInfo"></div>
-    <div id="divWeightPage"></div>
     <button class="btn btn-primary" id="btnMedicalPage">Medical Record</button>
+    
     
     </div>
     <div id="medicalRecord">
@@ -64,7 +67,7 @@ function SetupCreatePetForm() {
         <input type="text" id="PetBreed"><br><br>
         <label>Pet Gender</label>
         <input type="text" id="PetGender"><br><br>
-        <input type="button" class="btn btn-primary" id="btnSubmitPet" value="submit">
+        <input type="button" class="btn btn-primary" id="btnSubmitPet" value="Submit">
     </form>
     </div>
     `
@@ -72,7 +75,7 @@ function SetupCreatePetForm() {
 
 function SetupCreatePet() {
     const btnSubmitPet = document.getElementById("btnSubmitPet");
-    btnSubmitPet.addEventListener("click", function(){
+    btnSubmitPet.addEventListener("click", function () {
         console.log("check add pet button");
         const newPet = {
             Id: 0,
@@ -90,14 +93,14 @@ function SetupCreatePet() {
 
 async function CreatePet(newPet) {
     let pet = await fetch(CONSTANTS.PetAPIURL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(newPet)
-    })
-    .then(response => response.json())
-    
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newPet)
+        })
+        .then(response => response.json())
+
     let petId = pet.id;
 
     let newRecord = {
@@ -113,15 +116,15 @@ async function CreatePet(newPet) {
     }
 
     let medicalRecord = await fetch(CONSTANTS.MedicalRecordAPIURL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(newRecord)
-    })
-    .then(response => response.json())
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newRecord)
+        })
+        .then(response => response.json())
     console.log(medicalRecord);
-    
+
     apiActions.getRequest(CONSTANTS.PetAPIURL + petId, data => {
         CONSTANTS.content.innerHTML = PetDetails(data);
         SetupMedicalPageButton(data);
@@ -154,25 +157,25 @@ function SetupUpdateMedicalRecord(data) {
     let updateMedicalRecord = document.getElementById("btnUpdateMedicalRecord");
 
 
-        updateMedicalRecord.addEventListener("click", function() {
-            console.log(data);
-            CONSTANTS.content.innerHTML = medicalRecord.UpdateMedicalRecord(data);
-            medicalRecord.SetupMedicalRecordSaveButton();
-        });
+    updateMedicalRecord.addEventListener("click", function () {
+        console.log(data);
+        CONSTANTS.content.innerHTML = medicalRecord.UpdateMedicalRecord(data);
+        medicalRecord.SetupMedicalRecordSaveButton();
+    });
 };
 
 
 function SetupMedicalPageButton(data) {
     let medicalLink = document.getElementById("btnMedicalPage");
 
-        medicalLink.addEventListener("click", function() {
-            console.log("medical page button clicked");
+    medicalLink.addEventListener("click", function () {
+        console.log("medical page button clicked");
 
-                CONSTANTS.content.innerHTML = medicalRecord.MedicalDetails(data);
-                //SetupUpdateMedicalRecord();
-                medicalRecord.setupMedicalItemLinks();
-                medicalRecord.SetupCreateNewMedicalItem();      
-        });
+        CONSTANTS.content.innerHTML = medicalRecord.MedicalDetails(data);
+        //SetupUpdateMedicalRecord();
+        medicalRecord.setupMedicalItemLinks();
+        medicalRecord.SetupCreateNewMedicalItem();
+    });
 };
 
 // function SetupWeightTrackerLink(){

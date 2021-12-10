@@ -45,7 +45,7 @@ namespace Pet_Health_Tracker
             modelbuilder.Entity<Pet>().HasData(
                new Pet() { Id = 1, Name = "Brewster", Age = 7, Species = "Dog", Breed = "Husky Mix", Gender = "Male", Photo = "", OwnerId = 1 },
                new Pet() { Id = 2, Name = "Princess Trudy", Age = 6, Species = "Dog", Breed = "Maltese", Gender = "Female", Photo = "", OwnerId = 1 },
-               new Pet() { Id = 3, Name = "Slim Jim", Age = 2, Species = "Ferret", Breed = "Black Sable", Gender = "Male", Photo = "", OwnerId = 1 });
+               new Pet() { Id = 3, Name = "Slim Jim", Age = 2, Species = "Dog", Breed = "Black Lab", Gender = "Male", Photo = "", OwnerId = 1 });
 
             modelbuilder.Entity<MedicalRecord>().HasData(
                new MedicalRecord() { Id = 1, Clinic = "Bedford Animal Hospital", PrimaryVet = "Dr. Doolittle", Phone = "440-555-1298", Street = "412 Oak Ln", City = "Bedford", State = "OH", Zip = "44123" , PetId = 1, },
@@ -53,12 +53,12 @@ namespace Pet_Health_Tracker
                new MedicalRecord() { Id = 3, Clinic = "Suburban Veterinarian Clinic", PrimaryVet = "Dr. Scott", Phone = "330-555-7263", Street = "58 Maple St", City = "Maple Heights", State = "OH", Zip = "44242", PetId = 3 });
 
             modelbuilder.Entity<MedicalItem>().HasData(
-               new MedicalItem() { Id = 1, MedicalRecordId = 1, ItemType = MedicalItemType.Vaccination, TreatedOn = DateTime.Now, Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna." },
-               new MedicalItem() { Id = 2, MedicalRecordId = 3, ItemType = MedicalItemType.Surgery, TreatedOn = DateTime.Now, Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna." },
-               new MedicalItem() { Id = 3, MedicalRecordId = 2, ItemType = MedicalItemType.Treatments, TreatedOn = DateTime.Now, Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna." },
-               new MedicalItem() { Id = 4, MedicalRecordId = 1, ItemType = MedicalItemType.Fixed, TreatedOn = DateTime.Now, Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna." },
-               new MedicalItem() { Id = 5, MedicalRecordId = 2, ItemType = MedicalItemType.Allergies, TreatedOn = DateTime.Now, Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna." },
-               new MedicalItem() { Id = 6, MedicalRecordId = 3, ItemType = MedicalItemType.Medications, TreatedOn = DateTime.Now, Description = "Cras eu malesuada lectus. Suspendisse vel mattis magna." });
+               new MedicalItem() { Id = 1, MedicalRecordId = 1, ItemType = MedicalItemType.Vaccination, TreatedOn = DateTime.Now, Description = "Rabies" },
+               new MedicalItem() { Id = 2, MedicalRecordId = 3, ItemType = MedicalItemType.Surgery, TreatedOn = DateTime.Now, Description = "Removed tumor in foot" },
+               new MedicalItem() { Id = 3, MedicalRecordId = 2, ItemType = MedicalItemType.Treatments, TreatedOn = DateTime.Now, Description = "Flea and tic" },
+               new MedicalItem() { Id = 4, MedicalRecordId = 1, ItemType = MedicalItemType.Fixed, TreatedOn = DateTime.Now, Description = "Male neuter" },
+               new MedicalItem() { Id = 5, MedicalRecordId = 2, ItemType = MedicalItemType.Allergies, TreatedOn = DateTime.Now, Description = "Tests found allergies to: Chicken, Pork, Egg, Turkey, Grains, Peas" },
+               new MedicalItem() { Id = 6, MedicalRecordId = 3, ItemType = MedicalItemType.Medications, TreatedOn = DateTime.Now, Description = "Hydrocortisone" });
 
             modelbuilder.Entity<Weight>().HasData(
                 new Weight() { Id = 1, CurrentWeight = 50, Date = DateTime.Now, PetId = 1 },

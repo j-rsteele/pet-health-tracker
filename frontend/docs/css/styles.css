@@ -7,6 +7,19 @@ ul,li{
     margin-right: 2em;
 }
 
+#details, 
+#medicalRecord
+{
+    border:1px solid black;
+    border-radius: 5px;
+    box-shadow: 1px 1px darkgray;
+    width: 400px;
+    padding: 1em;
+    margin: 0.5em auto;
+
+
+}
+
 html {
     text-align: center;
 }
@@ -26,9 +39,10 @@ input {
 #navbar {
     display: flex;
     font-size: 1.25em;
-    color:  rgb(157, 150, 247);
+    color:  rgb(11, 9, 29);
     margin: 0 auto .5em auto;
     cursor: pointer;
+    margin-top: 1em;
 }
 
 header {
@@ -72,6 +86,12 @@ header {
 #ownerInformation {
     margin: 2em;
     font-size: 1.25em;
+}
+
+.about{
+    width: 50vw;
+    font-size: 20px;
+    margin: 0 auto;
 }
 
 footer {
