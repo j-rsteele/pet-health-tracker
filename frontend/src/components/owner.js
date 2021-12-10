@@ -14,7 +14,7 @@ function DisplayOwner(owner) {
    <li>First Name: ${owner.firstName}</li>
    <li>Last Name: ${owner.lastName}</li>
    </ul>
-   <button id="btnEditOwner">Edit</button>
+   <button class="btn btn-primary" id="btnEditOwner">Edit</button>
    `
 }
 
@@ -52,7 +52,8 @@ function SetupSaveOwnerButton() {
         }
         apiActions.putRequest(CONSTANTS.OwnerAPIURL, OwnerId, editOwner, data => {
             console.log(data)
-            CONSTANTS.content.innerHTML = DisplayOwner(data);
+            CONSTANTS.content.innerHTML = DisplayOwner(data)
+            SetupEditOwnerButton(data);
         });
     });
 }
