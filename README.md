@@ -5,7 +5,7 @@ Pet Health Tracker
 
 DevOps: Jenna Steele, Dan Fairchild, Kevin Tousey, Jaxxon Crowe
 
-The Pet Health Tracker application was developed in response to a need for a user to keep track of their pets and all of their veterinarian & medical information.  The application also tracks weights for users who would like to monitor their pet’s weight over time.
+The Pet Health Tracker application was developed in response to a need for a user to keep track of their pets and all of their veterinarian & medical information.  
 
 Features:
 1) Add Owner name
