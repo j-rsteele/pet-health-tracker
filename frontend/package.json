@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-cli serve --mode development --static docs/ --open"
+    "start": "webpack-cli serve --mode development --static docs/ --open",
+    "build": "webpack-cli --mode production"
   },
   "keywords": [],
   "author": "",

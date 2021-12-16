@@ -48,7 +48,7 @@ function DisplayAllPets(pets) {
                     </div>
                     </li>
             </ul>
-        
+            
     `;
 }
 
